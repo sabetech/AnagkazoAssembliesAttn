@@ -22,6 +22,17 @@
                         </div>
                         <hr>
                         <div class="form-group row">
+                            <label for="rank" class="col-md-4 col-form-label text-md-right">Rank</label>
+                            <div class="">
+                                <select class="form-control rank" id="rank" name="rank" style="width:100%;">
+                                    <option value='Pastor'>Pastor</option>
+                                    <option value='Minister Shepherd'>Minister Shepherd</option>    
+                                    <option value='GWO'>GWO</option>    
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
                             <label for="person_name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="">
@@ -38,17 +49,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="form-group row">
-                            <label for="rank" class="col-md-4 col-form-label text-md-right">Rank</label>
-                            <div class="">
-                                <select class="form-control rank" id="rank" name="rank" style="width:100%;">
-                                    <option value='Pastor'>Pastor</option>
-                                    <option value='Minister Shepherd'>Minister Shepherd</option>    
-                                    <option value='GWO'>GWO</option>    
-                                </select>
-                            </div>
-                        </div>
-                        <hr>
+                        
                         <div class="form-group row">
                             <label for="tv_or_online" class="col-md-4 col-form-label text-md-right">TV or Online</label>
                             <div class="">
