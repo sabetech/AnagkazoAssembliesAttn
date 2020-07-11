@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Take Attendance</div>
 
-                <div class="card-body">
+                <div class="card-body" style="margin:auto">
                     <form method="POST" action="{{ route('postAttendance') }}">
                         @csrf
 
@@ -15,7 +15,7 @@
                             <label for="person_name" class="col-md-4 col-form-label text-md-right">Council</label>
 
                             <div class="">
-                                <select class="form-control col-md-4 council-find" id="council" name="council" style="width:100%;">
+                                <select class="form-control col-md-4 council-find" id="council" name="council" style="width:100%;" required>
                                 
                                 </select>
                             </div>
@@ -25,7 +25,7 @@
                             <label for="person_name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="">
-                                <select class="form-control col-md-4 person-find" id="person_name" name="person_name" style="width:100%;"></select>
+                                <select class="form-control col-md-4 person-find" id="person_name" name="person_name" style="width:100%;" required></select>
                             </div>
                         </div>
 
@@ -39,13 +39,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="tv_or_online" class="col-form-label text-md-right">TV or Online</label>
-                            <select class="form-control col-md-4 col-form-label text-md-right" id="tv_or_online" name="tv_or_online">
-                                <option value='Tv'>TV</option>
-                                <option value='Online'>Online</option>    
-                            </select>
+                            <label for="tv_or_online" class="col-md-4 col-form-label text-md-right">TV or Online</label>
+                            <div class="">
+                                <select class="form-control tv_or_online" id="tv_or_online" name="tv_or_online" style="width:100%;">
+                                    <option value='Online'>Online</option>
+                                    <option value='Tv'>TV</option>    
+                                </select>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
 
                     </form>
                 </div>
@@ -118,6 +120,7 @@
             }
         });
 
+        $(".tv_or_online").select2();
        
     });
 
