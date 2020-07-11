@@ -17,7 +17,7 @@ class CreateAttendanceTable extends Migration
             $table->bigIncrements('id');
             $table->integer('person_id')->unsigned();
             $table->string('flow_option');
-            $table->datetime('date_taken');
+            $table->date('date_taken');
             $table->timestamps();
         });
     }

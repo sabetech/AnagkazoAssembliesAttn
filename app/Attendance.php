@@ -8,6 +8,7 @@ class Attendance extends Model
 {
     //
     protected $table='attendance';
+    protected $guarded = ['id'];
 
     public static function postAttendance($person_id, $datetime, $tv_or_online){
 

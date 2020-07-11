@@ -83,6 +83,11 @@
 	        }
         })
 
+        let data = {};
+        $('.council-find').on('select2:select', function (e) {
+            data = e.params.data;
+        });
+
         $('.person-find').select2({
 		    placeholder: 'Choose your name',
             ajax: {
@@ -91,6 +96,7 @@
 	            data: function (params) {
 	              var query = {
 	                search: params.term,
+                    council_id: data.id
 	              }
 	              return query;
 	            },
