@@ -20,7 +20,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="form-group row">
                             <label for="person_name" class="col-md-4 col-form-label text-md-right">Name</label>
 
@@ -28,7 +28,7 @@
                                 <select class="form-control col-md-4 person-find" id="person_name" name="person_name" style="width:100%;" required></select>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="form-group row">
                             <label for="date" class="col-md-4 col-form-label text-md-right">Date</label>
 
@@ -37,7 +37,7 @@
 
                             </div>
                         </div>
-
+                        <hr>
                         <div class="form-group row">
                             <label for="tv_or_online" class="col-md-4 col-form-label text-md-right">TV or Online</label>
                             <div class="">
@@ -120,7 +120,9 @@
             }
         });
 
-        $(".tv_or_online").select2();
+        $(".tv_or_online").select2({
+            placeholder:'Tv Or Online'
+        });
        
     });
 
