@@ -22,7 +22,13 @@ class AttendanceController extends Controller
         $person_id = $request->get('person_name');
         $datetime = $request->get('date');
         $tv_or_online = $request->get('tv_or_online');
+        $rank = $request->get('rank');
+
         $person = Person::find($person_id);
+        
+        $person->rank = $rank;
+        $person->save();
+
         Attendance::postAttendance($person_id, $datetime, $tv_or_online);
 
         return view('attendance_submit')

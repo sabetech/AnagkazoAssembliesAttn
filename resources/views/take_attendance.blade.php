@@ -25,7 +25,7 @@
                             <label for="person_name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="">
-                                <select class="form-control col-md-4 person-find" id="person_name" name="person_name" style="width:100%;" required></select>
+                                <select class="form-control col-md-4 person-find" id="person_name" name="person_name" style="width:100%;" required disabled></select>
                             </div>
                         </div>
                         <hr>
@@ -35,6 +35,17 @@
                             <div class="">
                                 <input id="date" type="text" name="date" required>
 
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="rank" class="col-md-4 col-form-label text-md-right">Rank</label>
+                            <div class="">
+                                <select class="form-control rank" id="rank" name="rank" style="width:100%;">
+                                    <option value='Pastor'>Pastor</option>
+                                    <option value='Minister Shepherd'>Minister Shepherd</option>    
+                                    <option value='GWO'>GWO</option>    
+                                </select>
                             </div>
                         </div>
                         <hr>
@@ -88,6 +99,7 @@
         let data = {};
         $('.council-find').on('select2:select', function (e) {
             data = e.params.data;
+            $('.person-find').prop('disabled', false);
         });
 
         $('.person-find').select2({
