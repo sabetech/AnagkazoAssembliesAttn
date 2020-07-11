@@ -9,12 +9,32 @@
 
                 <div class="card-body">
 
-                    <table>
+                <table class="table table-striped">
                     
-                    </table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <th scope="row">$person->name</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        
+                    </tbody>
 
+                </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@endsection

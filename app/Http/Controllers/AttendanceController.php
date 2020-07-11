@@ -56,4 +56,10 @@ class AttendanceController extends Controller
         return response()->json($persons);
 
     }
+
+    public function attendanceReport(Request $request){
+
+        return view('results');
+
+    }
 }

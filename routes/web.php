@@ -19,6 +19,7 @@ Route::get('/', 'AttendanceController@index');
 Route::get('/getpersons', 'AttendanceController@searchPerson');
 Route::get('/getcouncils', 'AttendanceController@searchCouncil');
 Route::post('postattendance', 'AttendanceController@postAttendance')->name('postAttendance');
+Route::get('/attendance_report', 'AttendanceController@attendanceReport')->name('attendanceReport');
 
 Auth::routes();
 
