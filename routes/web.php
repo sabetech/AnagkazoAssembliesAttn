@@ -22,7 +22,7 @@ Route::post('postattendance', 'AttendanceController@postAttendance')->name('post
 Route::get('/attendance_report', 'AttendanceController@attendanceReport')->name('attendanceReport');
 Route::post('toggle-form', 'AttendanceController@toggleForm');
 //Route::get('/filter_option', 'AttendanceController@filter');
-Route::get('/export', 'AttendanceController@exportAttendance');
+Route::post('/export', 'AttendanceController@exportAttendance');
 
 
 Auth::routes();
