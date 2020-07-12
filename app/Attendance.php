@@ -20,4 +20,14 @@ class Attendance extends Model
         
         return true;
     }
+
+    public static function getAttendanceReport($date_filter){
+
+        // $attendanceReport = Attendance::leftJoin('persons', 'persons.id','=','attendance.person_id')
+        //                               ->leftJoin('council', 'persons.council_id','=','councils.id')
+        //                               ->where()
+
+    }
+
+    
 }

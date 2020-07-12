@@ -58,8 +58,16 @@ class AttendanceController extends Controller
     }
 
     public function attendanceReport(Request $request){
+        $date_filter = $request->get('date_filter');
+        if (! $date_filter){
+            $date_filter = date("Y-m-d");
+        }
 
-        return view('results');
+        $allPersons = Person::getAllPerson();
+
+        return view('results')
+            ->with('date', $date_filter)
+            ->with('allPersons', $allPersons);
 
     }
 }
