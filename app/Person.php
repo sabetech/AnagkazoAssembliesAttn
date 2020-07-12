@@ -19,7 +19,7 @@ class Person extends Model
         $persons_result = Person::where('name', 'LIKE', '%'.$name.'%')
                                 ->where('councils.id', 'LIKE', $council_id)
                                 ->leftJoin('councils', 'councils.id','=','persons.council_id')
-                                ->select(['persons.id', 'name as text'])->take(20)->get();
+                                ->select(['persons.id', 'name as text'])->get();
 
         return $persons_result;
 
