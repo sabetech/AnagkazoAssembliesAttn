@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Person;
 use App\Council;
 use App\Attendance;
+use App\ToggleForm;
 
 class AttendanceController extends Controller
 {
@@ -64,10 +65,18 @@ class AttendanceController extends Controller
         }
 
         $allPersons = Person::getAllPerson();
+        $formStatus = ToggleForm::first();
 
         return view('results')
             ->with('date', $date_filter)
+            ->with('formStatus', $formStatus)
             ->with('allPersons', $allPersons);
 
+    }
+
+    public function toggleForm(Request $request){
+
+        ToggleForm::toggleForm();
+        return response()->json(['state' => true]);
     }
 }
