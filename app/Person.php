@@ -26,7 +26,7 @@ class Person extends Model
     }
 
     public static function getAllPerson(){
-        $persons = Person::all();
+        $persons = Person::orderBy('council_id', 'asc')->get();
         return $persons;
     }
 
