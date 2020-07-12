@@ -20,23 +20,24 @@
                         @endif
                     </div>
                 </div>
-                <!-- <div class="card-header" >
+                <div class="card-header" >
                     Filter Options
-                    <select class="form-control " style="float:left">
-                        <option>
-                            Filled Form
+                    <select class="form-control col-md-4 filter_option" name="filter_options">
+                        <option value="show_all" @if ($filter_option == 'show_all') selected @endif>
+                            Show All
                         </option>
-                        <option>
-                            Form Not Filled
+                        <option value="filled" @if ($filter_option == 'filled') selected @endif>
+                            Show only Those who Filled
+                        </option>
+                        <option value="not_filled" @if ($filter_option == 'not_filled') selected @endif>
+                            Show Only Those who Did not fill
                         </option>
                     </select>
-                    <select class="form-control col-md-5" style="float:left">
-                        <option>
-                            Select Council
-                        </option>
-                        
-                    </select>
-                </div> -->
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" style="float:right;margin-top:1em;">Export to Excel</button>
+                    </div>
+                </div>
 
                 <div class="card-body">
 
@@ -53,6 +54,18 @@
                     </thead>
                     <tbody>
                         @foreach($allPersons as $person)
+                            @if ($filter_option == 'filled')
+                                @if (! $person->wasPresent($date)) 
+                                    @continue
+                                @endif
+                            @endif
+
+                            @if ($filter_option == 'not_filled')
+                                @if ($person->wasPresent($date)) 
+                                    @continue
+                                @endif
+                            @endif
+
                             <tr>
                                 <!-- <th scope="row">{{ $person->rank }}</th> -->
                                 <td style="width:20%">{{ $person->name }}
@@ -96,6 +109,15 @@
 
         });
 
+        $(".filter_option").change(function(){
+
+            let option = $(this).val();
+            let date = $("#date").val();
+
+            window.location = '?date_filter='+date+"&filter_option="+option;
+
+        });
+
         $('input[name="date"]').daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,
@@ -107,8 +129,9 @@
         });
 
         $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
-            console.log(picker.startDate.format('YYYY-MM-DD'));
-            window.location = '?date_filter='+picker.startDate.format('YYYY-MM-DD');
+            
+            let option = $(".filter_option").val();
+            window.location = '?date_filter='+picker.startDate.format('YYYY-MM-DD')+"&filter_option="+option;
             
         });
 

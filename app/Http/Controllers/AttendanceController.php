@@ -61,8 +61,14 @@ class AttendanceController extends Controller
 
     public function attendanceReport(Request $request){
         $date_filter = $request->get('date_filter');
+        $filter_option = $request->get('filter_option');
+
         if (! $date_filter){
             $date_filter = date("Y-m-d");
+        }
+
+        if (! $filter_option){
+            $filter_option = 'show_all';
         }
 
         $allPersons = Person::getAllPerson();
@@ -70,6 +76,7 @@ class AttendanceController extends Controller
 
         return view('results')
             ->with('date', $date_filter)
+            ->with('filter_option', $filter_option)
             ->with('formStatus', $formStatus)
             ->with('allPersons', $allPersons);
 
@@ -79,5 +86,14 @@ class AttendanceController extends Controller
 
         ToggleForm::toggleForm();
         return response()->json(['state' => true]);
+    }
+
+    public function filter(Request $request){
+
+        $filter_option = $request->get('filter_option');
+        $date = $request->get('date_filter');
+
+
+
     }
 }
