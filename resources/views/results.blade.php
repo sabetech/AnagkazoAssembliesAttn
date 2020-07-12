@@ -8,6 +8,11 @@
                 <div class="card-header" >
                     Select Date
                     <input id="date" type="text" name="date" value="{{ (isset($date)) ? $date:'f' }}" required style="width:10em;">
+
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
+                    </div>
                 </div>
                 <!-- <div class="card-header" >
                     Filter Options
@@ -75,6 +80,12 @@
     
     $(document).ready(function(){
         $.noConflict();
+
+        $("#customSwitch1").change(function(){
+            
+            $("#lock-label").text( ($(this).is(':checked')) ? 'Form is Locked' : 'Form is opened' );
+
+        });
 
         $('input[name="date"]').daterangepicker({
             singleDatePicker: true,
