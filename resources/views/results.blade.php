@@ -4,43 +4,45 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" >
-                    Select Date
-                    <input id="date" type="text" name="date" value="{{ (isset($date)) ? $date:'f' }}" required style="width:10em;">
+            <form method="GET" action="export">
+                <div class="card">
+                    <div class="card-header" >
+                        Select Date
+                        <input id="date" type="text" name="date_filter" value="{{ (isset($date)) ? $date:'f' }}" required style="width:10em;">
 
-                    <div class="custom-control custom-switch">
-                        
-                        @if ($formStatus->form_status == true)
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                            <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
-                        @else
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                            <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Closed</label>
-                        @endif
+                        <div class="custom-control custom-switch">
+                            
+                            @if ($formStatus->form_status == true)
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
+                            @else
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Closed</label>
+                            @endif
+
+                        </div>
                     </div>
-                </div>
-                <div class="card-header" >
-                    Filter Options
-                    <select class="form-control col-md-4 filter_option" name="filter_options">
-                        <option value="show_all" @if ($filter_option == 'show_all') selected @endif>
-                            Show All
-                        </option>
-                        <option value="filled" @if ($filter_option == 'filled') selected @endif>
-                            Show only Those who Filled
-                        </option>
-                        <option value="not_filled" @if ($filter_option == 'not_filled') selected @endif>
-                            Show Only Those who Did not fill
-                        </option>
-                    </select>
+                    <div class="card-header" >
+                        Filter Options
+                        <select class="form-control col-md-4 filter_option" name="filter_option">
+                            <option value="show_all" @if ($filter_option == 'show_all') selected @endif>
+                                Show All
+                            </option>
+                            <option value="filled" @if ($filter_option == 'filled') selected @endif>
+                                Show only Those who Filled
+                            </option>
+                            <option value="not_filled" @if ($filter_option == 'not_filled') selected @endif>
+                                Show Only Those who Did not fill
+                            </option>
+                        </select>
 
-                    <div class="form-group">
-                        <button class="btn btn-primary" style="float:right;margin-top:1em;">Export to Excel</button>
+                        <div class="form-group">
+                            <button class="btn btn-primary" style="float:right;margin-top:1em;" type="submit">Export to Excel</button>
+                        </div>
                     </div>
-                </div>
-
+                </form>
+                
                 <div class="card-body">
-
                 <table class="table-responsive table-striped">
                     
                     <thead>
@@ -118,7 +120,7 @@
 
         });
 
-        $('input[name="date"]').daterangepicker({
+        $('input[name="date_filter"]').daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,
             minYear: 2019,
@@ -128,7 +130,7 @@
             }
         });
 
-        $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
+        $('input[name="date_filter"]').on('apply.daterangepicker', function(ev, picker) {
             
             let option = $(".filter_option").val();
             window.location = '?date_filter='+picker.startDate.format('YYYY-MM-DD')+"&filter_option="+option;

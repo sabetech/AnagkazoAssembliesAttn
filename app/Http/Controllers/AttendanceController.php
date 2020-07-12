@@ -7,6 +7,8 @@ use App\Person;
 use App\Council;
 use App\Attendance;
 use App\ToggleForm;
+use App\Exports\ExportAttendance;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends Controller
 {
@@ -88,12 +90,16 @@ class AttendanceController extends Controller
         return response()->json(['state' => true]);
     }
 
-    public function filter(Request $request){
+    public function exportAttendance(Request $request){
 
         $filter_option = $request->get('filter_option');
         $date = $request->get('date_filter');
 
+        $exportAttendance = new ExportAttendance($date, $filter_option);
 
+        return Excel::download($exportAttendance, "AA_Attendance_$date.xlsx");
 
     }
+
+
 }
