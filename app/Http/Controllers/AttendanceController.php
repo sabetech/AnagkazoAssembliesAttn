@@ -12,8 +12,9 @@ class AttendanceController extends Controller
 {
 
     public function index(){
-
-        return view('take_attendance');
+        $formStatus = ToggleForm::first();
+        return view('take_attendance')
+                ->with('formStatus', $formStatus);
 
     }
     //

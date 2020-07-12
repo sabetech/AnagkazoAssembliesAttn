@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if($formStatus->form_status)
                 <div class="card-header">Take Attendance</div>
 
                 <div class="card-body" style="margin:auto">
@@ -60,6 +61,9 @@
 
                     </form>
                 </div>
+                @else
+                    <div class="card-header">Form is currently Closed</div>
+                @endif
             </div>
         </div>
     </div>
