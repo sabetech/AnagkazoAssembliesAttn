@@ -41,7 +41,7 @@ class ExportAttendance implements FromArray
             $row[] = $person->name;
             $row[] = $person->Council->council;
             $row[] = ($person->wasPresent($this->date) ? "Form Filled" : "Form Not Filled");
-            $row[] = $person->tvOrOnline;
+            $row[] = $person->tvOrOnline($this->date);
             
             $exportArray[] = $row;
         }
