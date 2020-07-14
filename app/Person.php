@@ -40,4 +40,12 @@ class Person extends Model
         return false;
 
     }
+
+    public function tvOrOnline($date){
+        $person = Attendance::where('date_taken', $date)
+                        ->where('person_id', $this->id)
+                        ->first();
+
+        return $person->flow_option;
+    }
 }

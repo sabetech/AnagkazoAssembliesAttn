@@ -22,7 +22,7 @@ class ExportAttendance implements FromArray
     {
         $allPersons = Person::getAllPerson();
         $exportArray = [];
-        $exportArray[] = ['Name', 'Council', 'Status'];
+        $exportArray[] = ['Name', 'Council', 'Status', 'TV or Online'];
 
         foreach($allPersons as $person){
             $row = [];
@@ -41,6 +41,7 @@ class ExportAttendance implements FromArray
             $row[] = $person->name;
             $row[] = $person->Council->council;
             $row[] = ($person->wasPresent($this->date) ? "Form Filled" : "Form Not Filled");
+            $row[] = $person->tvOrOnline;
             
             $exportArray[] = $row;
         }
