@@ -45,7 +45,8 @@ class Person extends Model
         $person = Attendance::where('date_taken', $date)
                         ->where('person_id', $this->id)
                         ->first();
-
-        return $person->flow_option;
+        if ($person)
+            return $person->flow_option;
+        return 'none';
     }
 }
