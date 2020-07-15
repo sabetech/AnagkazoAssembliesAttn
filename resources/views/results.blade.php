@@ -90,14 +90,32 @@
                 </table>--> 
 
                 <ul class="list-unstyled">
+                  
+                  @foreach($allPersons as $person)
+                  
                   <li class="media">
-                    <img src="..." class="mr-3" alt="...">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
                     <div class="media-body">
-                      
+                      <span class="badge badge-primary">
+                          {{ $person->rank }}
+                      </span>
                       <h5 class="mt-0 mb-1">{{ $person->name }}</h5>
-                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      @if ($person->wasPresent($date)) 
+                        <span class="badge badge-pill badge-success">Form Filled</span>
+                      @else
+                        <span class="badge badge-pill badge-danger">Not Filled</span>
+                      @endif
+                      <div class="pull-right">
+                        {{ $person->tvOrOnline($date) }}
+                      </div>
+
                     </div>
                   </li>
+                  
+                  @endforeach
+
                 </ul>
 
 
