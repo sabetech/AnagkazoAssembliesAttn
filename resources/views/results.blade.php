@@ -119,6 +119,8 @@
                     <div class="float-right">
                         @if (! $person->wasPresent($date))
                             <span class="badge badge-light">{{ $person->tvOrOnline($date) }}</span>
+                        @else
+                            <span class="badge badge-primary">{{ $person->tvOrOnline($date) }}</span>
                         @endif
                     </div>
 
