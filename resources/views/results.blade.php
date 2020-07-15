@@ -44,50 +44,6 @@
                 </form>
                 
                 <div class="card-body">
-                <!-- <table class="table-responsive table-striped">
-                    
-                    <thead>
-                        <tr>
-                            <th scope="col">Rank</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Date</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($allPersons as $person)
-                            @if ($filter_option == 'filled')
-                                @if (! $person->wasPresent($date)) 
-                                    @continue
-                                @endif
-                            @endif
-
-                            @if ($filter_option == 'not_filled')
-                                @if ($person->wasPresent($date)) 
-                                    @continue
-                                @endif
-                            @endif
-
-                            <tr>
-                                <th scope="row">{{ $person->rank }}</th>
-                                <td style="width:20%">{{ $person->name }}
-                                <span class="badge badge-pill badge-info">{{ $person->Council->council }}</span>
-                                </td>
-                                <td> 
-                                    @if ($person->wasPresent($date)) 
-                                        <span class="badge badge-pill badge-success">Form Filled</span>
-                                    @else
-                                    <span class="badge badge-pill badge-danger">Not Filled</span>
-                                    @endif
-                                </td>
-                                <td>{{ date("M d Y", strtotime($date)) }}</td>
-                            </tr>
-                        @endforeach
-                        
-                    </tbody> 
-
-                </table>--> 
 
                 <ul class="list-unstyled">
                   
@@ -128,11 +84,7 @@
                   </li>
 
                   @endforeach
-
                 </ul>
-
-
-
                 </div>
             </div>
         </div>
@@ -144,7 +96,6 @@
 @section('scripts')
 <script>
 
-    
     $(document).ready(function(){
         $.noConflict();
 
