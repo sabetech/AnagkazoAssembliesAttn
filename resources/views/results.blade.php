@@ -116,8 +116,10 @@
                     @else
                         <span class="badge badge-pill badge-danger">Not Filled</span>
                     @endif
-                    <div class="pull-right">
-                        <span class="badge badge-pill badge-primary">{{ $person->tvOrOnline($date) }}</span>
+                    <div class="float-right">
+                        @if (! $person->wasPresent($date))
+                            <span class="badge badge-light">{{ $person->tvOrOnline($date) }}</span>
+                        @endif
                     </div>
 
                     </div>
