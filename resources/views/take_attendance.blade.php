@@ -6,14 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 @if($formStatus->form_status)
-                <div class="card-header">Take Attendance</div>
+                <div class="card-header">Attendance for {{ date('M d, Y') }}</div>
 
                 <div class="card-body" style="margin:auto">
                     <form method="POST" action="{{ route('postAttendance') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="person_name" class="col-md-4 col-form-label text-md-right">Council</label>
+                            <label for="council" class="col-md-4 col-form-label text-md-right">Council/Mission</label>
 
                             <div class="">
                                 <select class="form-control col-md-4 council-find" id="council" name="council" style="width:15em;" required>
@@ -146,8 +146,10 @@
         $(".tv_or_online").select2({
             placeholder:'Tv Or Online',
             data:[
-                    {id: 'Online', text:'Online'},
-                    {id: 'Tv', text:'Tv'},
+                    {id: 'Healing_Jesus_Tv', text:'Healing Jesus Tv'},
+                    {id: 'Facebook', text:'Facebook'},
+                    {id: 'Youtube', text:'Youtube'},
+                    
                 ]
                 
         });

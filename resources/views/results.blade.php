@@ -44,11 +44,11 @@
                 </form>
                 
                 <div class="card-body">
-                <table class="table-responsive table-striped">
+                <!-- <table class="table-responsive table-striped">
                     
                     <thead>
                         <tr>
-                            <!-- <th scope="col">Rank</th> -->
+                            <th scope="col">Rank</th>
                             <th scope="col">Name</th>
                             <th scope="col">Status</th>
                             <th scope="col">Date</th>
@@ -70,7 +70,7 @@
                             @endif
 
                             <tr>
-                                <!-- <th scope="row">{{ $person->rank }}</th> -->
+                                <th scope="row">{{ $person->rank }}</th>
                                 <td style="width:20%">{{ $person->name }}
                                 <span class="badge badge-pill badge-info">{{ $person->Council->council }}</span>
                                 </td>
@@ -85,9 +85,23 @@
                             </tr>
                         @endforeach
                         
-                    </tbody>
+                    </tbody> 
 
-                </table>
+                </table>--> 
+
+                <ul class="list-unstyled">
+                  <li class="media">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                      
+                      <h5 class="mt-0 mb-1">{{ $person->name }}</h5>
+                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                  </li>
+                </ul>
+
+
+
                 </div>
             </div>
         </div>
