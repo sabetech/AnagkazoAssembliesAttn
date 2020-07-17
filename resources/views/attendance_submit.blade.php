@@ -10,6 +10,8 @@
                 <div class="card-body">
                     <div class="alert alert-primary" role="alert">
                     Hello, {{ $person->name }} Your Attendance has been recorded Successfully!
+                    <br>
+                    Date: {{ date("F d, Y", strtotime($date)) }}
                 </div>
                 <div style="float:right">
                 <a href="{{ url('/') }}">Take attendance</a>

@@ -17,7 +17,7 @@
 
                             <div class="">
                                 <select class="form-control col-md-4 council-find" id="council" name="council" style="width:15em;" required>
-                                
+
                                 </select>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                             <label for="rank" class="col-md-4 col-form-label text-md-right">Rank</label>
                             <div class="">
                                 <select class="form-control rank" id="rank" name="rank" style="width:15em;">
-                                    
+
                                 </select>
                             </div>
                         </div>
@@ -43,17 +43,18 @@
                             <label for="date" class="col-md-4 col-form-label text-md-right">Date</label>
 
                             <div class="">
-                                <input id="date" type="text" name="date" required style="width:15em;">
+                                <input id="date" type="hidden" name="date" style="width:15em;">
+                                <label class="form-control">{{ date("F d, Y") }}</label>
 
                             </div>
                         </div>
                         <hr>
-                        
+
                         <div class="form-group row">
                             <label for="tv_or_online" class="col-md-4 col-form-label text-md-right">TV or Online</label>
                             <div class="">
                                 <select class="form-control tv_or_online" id="tv_or_online" name="tv_or_online" style="width:15em;">
-                                    
+
                                 </select>
                             </div>
                         </div>
@@ -75,7 +76,7 @@
 
 <script>
 
-    
+
     $(document).ready(function(){
         $.noConflict();
 
@@ -123,7 +124,7 @@
 	            }
 	        }
         });
-        
+
         $('input[name="date"]').daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,
@@ -149,11 +150,11 @@
                     {id: 'Healing_Jesus_Tv', text:'Healing Jesus Tv'},
                     {id: 'Facebook', text:'Facebook'},
                     {id: 'Youtube', text:'Youtube'},
-                    
+
                 ]
-                
+
         });
-       
+
     });
 
 
