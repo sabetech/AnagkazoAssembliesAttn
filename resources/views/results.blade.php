@@ -12,7 +12,7 @@
                         <input id="date" type="text" name="date_filter" value="{{ (isset($date)) ? $date:'f' }}" required style="width:10em;">
 
                         <div class="custom-control custom-switch">
-                            
+
                             @if ($formStatus->form_status == true)
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                 <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
@@ -42,20 +42,31 @@
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="card-body">
 
                 <ul class="list-unstyled">
-                  
+
                   @foreach($allPersons as $person)
-                  
+                    @if ($filter_option == 'filled')
+                        @if (! $person->wasPresent($date))
+                            @continue
+                        @endif
+                    @endif
+
+                    @if ($filter_option == 'not_filled')
+                        @if ($person->wasPresent($date))
+                            @continue
+                        @endif
+                    @endif
+
                   <li class="media">
-                    
+
                     <div class="media-body shadow-sm p-3 mb-5 bg-white rounded">
                       <span class="badge badge-primary">
                           {{ $person->rank }}
                       </span>
-                      
+
                     <h5 class="mt-0 mb-1">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -67,7 +78,7 @@
                         {{ $person->Council->council }}
                     </span>
 
-                    @if ($person->wasPresent($date)) 
+                    @if ($person->wasPresent($date))
                         <span class="badge badge-pill badge-success">Form Filled</span>
                     @else
                         <span class="badge badge-pill badge-danger">Not Filled</span>
@@ -76,7 +87,7 @@
                         @if ($person->wasPresent($date))
                             <span class="badge badge-primary">{{ $person->tvOrOnline($date) }}</span>
                         @else
-                            
+
                         @endif
                     </div>
 
@@ -100,7 +111,7 @@
         $.noConflict();
 
         $("#customSwitch1").change(function(){
-            
+
             $("#lock-label").text( ($(this).is(':checked')) ? 'Form is Closed' : 'Form is Opened' );
             $.post('toggle-form', function(response){
 
@@ -128,10 +139,10 @@
         });
 
         $('input[name="date_filter"]').on('apply.daterangepicker', function(ev, picker) {
-            
+
             let option = $(".filter_option").val();
             window.location = '?date_filter='+picker.startDate.format('YYYY-MM-DD')+"&filter_option="+option;
-            
+
         });
 
     });
