@@ -30,7 +30,13 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    Ofaakor Council FLOW Prayer<br>Attendance Form
+                    @if($council_name)
+                    {{$council_name}} FLOW Prayer<br>Attendance Form
+                    @else
+                    AA FLOW Prayer Meeting<br>
+                    Attendance Form<br>
+                    For Pastors/Ms/GWOs
+                    @endif
                 </a>
 
 

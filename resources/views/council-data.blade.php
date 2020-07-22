@@ -20,7 +20,6 @@
                             <div class="">
                                 <input id="date" type="hidden" name="date" style="width:15em;">
                                 <label class="form-control">{{ date("F d, Y") }}</label>
-
                             </div>
                         </div>
                         <hr>
@@ -102,7 +101,7 @@
         $('.mission-find').select2({
             placeholder: 'Choose your Mission/Branch',
             ajax: {
-	            url: '/getmissions',
+	            url: '/getbranches',
 	            delay: 250,
 	            data: function (params) {
 	              var query = {

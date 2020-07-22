@@ -29,8 +29,14 @@ Route::post('/export', 'AttendanceController@exportAttendance');
 
 
 ///Councils ...
-Route::get('/ofaakor', 'CouncilAttendanceController@ofaakor');
-Route::get('/getmissions', 'CouncilAttendanceController@getMissions');
+Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm');
+
+// Route::get('/ofaakor', 'CouncilAttendanceController@ofaakor');
+// Route::get('/bantama', 'CouncilAttendanceController@bantama');
+
+
+
+Route::get('/getbranches', 'CouncilAttendanceController@getBranches');
 
 Route::post('postCouncilAttendance', 'CouncilAttendanceController@postCouncilAttendance')
     ->name('postCouncilAttendance');
