@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -30,11 +30,11 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    AA FLOW Prayer Meeting<br>Attendance Form<br>For Pastors/Ms/GWOs
+                    Ofaakor Council FLOW Prayer<br>Attendance Form
                 </a>
-                
 
-                
+
+
             </div>
         </nav>
 
@@ -43,7 +43,7 @@
         </main>
     </div>
 
-    
+
 <script type="text/javascript" src="{{ url('js/jquery.min.js?v=2') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/bootstrap.min.js') }}"></script>
@@ -51,7 +51,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="{{ url('js/daterangepicker.js') }}"></script>
 <script src="{{ url('js/select2.full.min.js') }}" ></script>
-    
+
 
 @yield('scripts')
 </body>

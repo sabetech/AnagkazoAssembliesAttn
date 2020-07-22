@@ -15,6 +15,8 @@
 //     return view('welcome');
 // });
 
+//use Illuminate\Routing\Route;
+
 Route::get('/', 'AttendanceController@index');
 Route::get('/getpersons', 'AttendanceController@searchPerson');
 Route::get('/getcouncils', 'AttendanceController@searchCouncil');
@@ -24,6 +26,14 @@ Route::post('toggle-form', 'AttendanceController@toggleForm');
 //Route::get('/filter_option', 'AttendanceController@filter');
 Route::post('/export', 'AttendanceController@exportAttendance');
 
+
+
+///Councils ...
+Route::get('/ofaakor', 'CouncilAttendanceController@ofaakor');
+Route::get('/getmissions', 'CouncilAttendanceController@getMissions');
+
+Route::post('postCouncilAttendance', 'CouncilAttendanceController@postCouncilAttendance')
+    ->name('postCouncilAttendance');
 
 Auth::routes();
 
