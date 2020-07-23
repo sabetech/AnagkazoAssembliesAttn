@@ -29,12 +29,12 @@ Route::post('/export', 'AttendanceController@exportAttendance');
 
 
 ///Councils ...
-Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm');
+Route::get('/council/bantama', function () {
+    return redirect()->route('council_attendance_form', 3);
+});
 
-// Route::get('/ofaakor', 'CouncilAttendanceController@ofaakor');
-// Route::get('/bantama', 'CouncilAttendanceController@bantama');
 
-
+Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm')->name('council_attendance_form');
 
 Route::get('/getbranches', 'CouncilAttendanceController@getBranches');
 Route::get('/getpastors', 'CouncilAttendanceController@getPastors');
