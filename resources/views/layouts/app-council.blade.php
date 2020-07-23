@@ -6,7 +6,7 @@
     <meta property="og:site_name" content="Council FLOW Forms">
     <meta property="og:title" content="Council FLOW Forms" />
     <meta property="og:description" content="Data about the FLOW prayer for the various councils" />
-    <meta property="og:image" itemprop="image" content="http://pollosweb.wesped.es/programa_pollos/play.png">
+    <meta property="og:image" itemprop="image" content="https://images.unsplash.com/photo-1521178010706-baefe2334211?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80">
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="1440432930" />
 
