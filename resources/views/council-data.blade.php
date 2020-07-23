@@ -58,7 +58,7 @@
 
                             <select class="form-control pastors-shepherds"
                             id="pastors-shepherds" name="pastors-shepherds"
-                            style="width:15em;" multiple='multiple'>
+                            style="width:15em;" multiple='multiple' disabled>
 
                             </select>
                         </div>
@@ -100,6 +100,7 @@
 
         let branch_val = {};
         let rank_val = {'id': 'Pastor'};
+        let person = {};
 
         $('.mission-find').select2({
             placeholder: 'Choose your Mission/Branch',
@@ -136,7 +137,6 @@
 	              return query;
 	            },
 	            processResults: function (data) {
-                    console.log(data);
 	              return {
 	                  results: data
 	              };
@@ -144,22 +144,26 @@
 	        }
         });
 
+        $('.person-find').on('select2:select', function(e){
+            person = e.params.data;
+            $('.pastors-shepherds').prop('disabled', false);
+        });
+
         $('.pastors-shepherds').select2({
-            placeholder: 'Select Pastors or Shepherds who were absent',
+            placeholder: 'Select Pastors or Shepherds who were Absent',
             ajax: {
 	            url: '/shepherds',
 	            delay: 250,
 	            data: function (params) {
 	              var query = {
-	                search: params.term,
-                    council_id: {!!$council->id!!},
+	                council_id: {!!$council->id!!},
+                    search: params.term,
                     branch: branch_val.id,
-                    rank: rank_val.id
+                    person_id: person.id
 	              }
 	              return query;
 	            },
 	            processResults: function (data) {
-                    console.log(data);
 	              return {
 	                  results: data
 	              };

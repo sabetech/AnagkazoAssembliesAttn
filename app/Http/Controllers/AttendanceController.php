@@ -57,8 +57,6 @@ class AttendanceController extends Controller
 
         $council_id = $request->get('council_id');
 
-        return json_encode($request->all());
-
         $persons = Person::search($name, $council_id);
 
         return response()->json($persons);

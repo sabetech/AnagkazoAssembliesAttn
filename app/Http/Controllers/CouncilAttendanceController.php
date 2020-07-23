@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Branch;
 use App\Council;
 use App\Person;
+use App\Shepherd;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -42,5 +43,17 @@ class CouncilAttendanceController extends Controller
         $person = Person::search($search, $council_id, $branch, $rank);
 
         return response()->json($person);
+    }
+
+    public function getShepherds(Request $request)
+    {
+        $search = $request->get('search');
+        $council_id = $request->get('council_id');
+        $person_id = $request->get('person_id');
+        $branch_id = $request->get('branch');
+
+        $shepherd = Shepherd::search($search, $council_id, $branch_id, $person_id);
+
+        return response()->json($shepherd);
     }
 }
