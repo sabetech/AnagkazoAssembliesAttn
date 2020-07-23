@@ -156,7 +156,6 @@
 	            delay: 250,
 	            data: function (params) {
 	              var query = {
-	                council_id: {!!$council->id!!},
                     search: params.term,
                     branch: branch_val.id,
                     person_id: person.id
@@ -164,6 +163,7 @@
 	              return query;
 	            },
 	            processResults: function (data) {
+                    console.log(data);
 	              return {
 	                  results: data
 	              };

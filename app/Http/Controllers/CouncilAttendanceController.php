@@ -48,11 +48,10 @@ class CouncilAttendanceController extends Controller
     public function getShepherds(Request $request)
     {
         $search = $request->get('search');
-        $council_id = $request->get('council_id');
         $person_id = $request->get('person_id');
         $branch_id = $request->get('branch');
 
-        $shepherd = Shepherd::search($search, $council_id, $branch_id, $person_id);
+        $shepherd = Shepherd::search($search, $branch_id, $person_id);
 
         return response()->json($shepherd);
     }
