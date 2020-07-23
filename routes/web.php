@@ -33,8 +33,11 @@ Route::get('/council/bantama', function () {
     return redirect()->route('council_attendance_form', 3);
 });
 
-
+Route::get('/council/report', 'CouncilAttendanceController@report');
 Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm')->name('council_attendance_form');
+
+
+
 
 Route::get('/getbranches', 'CouncilAttendanceController@getBranches');
 Route::get('/getpastors', 'CouncilAttendanceController@getPastors');

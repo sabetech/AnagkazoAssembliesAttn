@@ -7,7 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@if(isset($council->council))
+                {{$council->council}} FLOW Prayer<br>Attendance Form
+            @else
+                {{ config('app.name', 'Laravel') }}
+            @endif
+</title>
 
     <!-- Scripts -->
 

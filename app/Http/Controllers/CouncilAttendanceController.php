@@ -76,6 +76,8 @@ class CouncilAttendanceController extends Controller
                 'person_id' => $person_id
             ],
             [
+                'council_id' => $council->id,
+                'branch_id' => $branch->id,
                 'shepherd_attendance_ids' => json_encode($shepherds),
                 'total_member_attendances' => $member_count
             ]
@@ -87,5 +89,17 @@ class CouncilAttendanceController extends Controller
             ->with('branch', $branch)
             ->with('council', $council)
             ->with('person', $person);
+    }
+
+    public function report(Request $request)
+    {
+        $date = $request->get('date_filter', date("Y-m-d"));
+
+        //get All councils and get all get council reports
+        $allCouncilReport = CouncilAttendance::getAllCouncilReport($date);
+
+
+        return view('council_reports')
+            ->with('date', $date);
     }
 }

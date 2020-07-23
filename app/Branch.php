@@ -9,6 +9,10 @@ class Branch extends Model
     //
     protected $table = 'council_branches';
 
+    public function councilAttendance($date)
+    {
+    }
+
     public static function searchBranch($council_id, $searchTerm)
     {
         $branches = Branch::where('council_id', $council_id)
