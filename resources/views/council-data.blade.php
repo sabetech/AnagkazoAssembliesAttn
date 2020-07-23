@@ -13,6 +13,7 @@
                         @csrf
 
                         <h3>{{ $council->council }}</h3>
+                        <input type='hidden' name='council_id' value="{{$council->id}}"/>
                         <hr>
                         <div class="form-group row">
                             <label for="date" class="col-md-4 col-form-label text-md-right">Date</label>
@@ -57,7 +58,7 @@
                             </label>
 
                             <select class="form-control pastors-shepherds"
-                            id="pastors-shepherds" name="pastors-shepherds"
+                            id="pastors-shepherds" name="pastors-shepherds[]"
                             style="width:15em;" multiple='multiple' disabled>
 
                             </select>
@@ -71,7 +72,7 @@
                             HOW MANY OF YOUR MEMBERS PARTICIPATED IN THE FLOW TODAY?
                             </label>
 
-                            <input type="number" name="number_shepherds_participated_flow" />
+                            <input type="number" name="flow_member_attendance" />
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="float:right;">
@@ -150,7 +151,7 @@
         });
 
         $('.pastors-shepherds').select2({
-            placeholder: 'Select Pastors or Shepherds who were Absent',
+            placeholder: 'Shepherds who FLOWED',
             ajax: {
 	            url: '/shepherds',
 	            delay: 250,
@@ -163,7 +164,6 @@
 	              return query;
 	            },
 	            processResults: function (data) {
-                    console.log(data);
 	              return {
 	                  results: data
 	              };

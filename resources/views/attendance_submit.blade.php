@@ -9,13 +9,17 @@
 
                 <div class="card-body">
                     <div class="alert alert-primary" role="alert">
-                    Hello, {{ $person->name }} Your Attendance has been recorded Successfully!
+                    Hello, {{ $person->name }} {{$msg}}
                     <br>
                     Date: {{ date("F d, Y", strtotime($date)) }}
+                    <br>
+                    @if (isset($branch))
+                        Branch: {{$branch->branch_name}}
+                    @endif
                 </div>
-                <div style="float:right">
+                {{-- <div style="float:right">
                 <a href="{{ url('/') }}">Take attendance</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

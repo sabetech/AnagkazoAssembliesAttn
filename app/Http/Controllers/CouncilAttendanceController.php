@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Branch;
 use App\Council;
+use App\CouncilAttendance;
 use App\Person;
 use App\Shepherd;
 use Illuminate\Database\Eloquent\Collection;
@@ -54,5 +55,37 @@ class CouncilAttendanceController extends Controller
         $shepherd = Shepherd::search($search, $branch_id, $person_id);
 
         return response()->json($shepherd);
+    }
+
+    public function postCouncilAttendance(Request $request)
+    {
+        $date_taken = $request->get('date');
+        $person_id = $request->get('person_name');
+        $shepherds = $request->get('pastors-shepherds');
+        $member_count = $request->get('flow_member_attendance');
+        $branch_id = $request->get('mission');
+        $council_id = $request->get('council_id');
+
+        $person = Person::find($person_id);
+        $branch = Branch::find($branch_id);
+        $council = Council::find($council_id);
+
+        CouncilAttendance::updateOrCreate(
+            [
+                'date_taken' => $date_taken,
+                'person_id' => $person_id
+            ],
+            [
+                'shepherd_attendance_ids' => json_encode($shepherds),
+                'total_member_attendances' => $member_count
+            ]
+        );
+
+        return view('attendance_submit')
+            ->with('date', $date_taken)
+            ->with('msg', 'Your FLOW attendance information has been recorded Successfully!')
+            ->with('branch', $branch)
+            ->with('council', $council)
+            ->with('person', $person);
     }
 }

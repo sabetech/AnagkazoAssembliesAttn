@@ -38,6 +38,7 @@ class AttendanceController extends Controller
 
         return view('attendance_submit')
             ->with('date', $datetime)
+            ->with('msg', 'Your Attendance has been recorded Successfully!')
             ->with('person', $person);
     }
 
