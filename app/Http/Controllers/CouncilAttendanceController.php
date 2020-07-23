@@ -96,10 +96,11 @@ class CouncilAttendanceController extends Controller
         $date = $request->get('date_filter', date("Y-m-d"));
 
         //get All councils and get all get council reports
-        $allCouncilReport = CouncilAttendance::getAllCouncilReport($date);
-
+        $councils = Council::all();
 
         return view('council_reports')
+            ->with('councils', $councils)
+            ->with('page_title', "Council FLOW Report")
             ->with('date', $date);
     }
 }

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{$council->council}} FLOW Prayer<br>Attendance Form
+    <title>Council FLOW Prayer<br>Attendance Form
 </title>
 
     <!-- Scripts -->
@@ -30,11 +30,13 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{$council->council}} FLOW Prayer<br>Attendance Form
+                    @if(isset($page_title))
+                        {{$page_title}}
+                        @else
+                        Council FLOW Prayer<br>Attendance Form
+                    @endif
+
                 </a>
-
-
-
             </div>
         </nav>
 
