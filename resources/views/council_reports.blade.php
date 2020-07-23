@@ -53,6 +53,7 @@
                           </svg>
                         <h5 class="mt-0 mb-1">
                             {{ $council->council }}
+                            <label class="float-left">{{ date("F d, Y", strtotime($date)) }}</label>
                         </h5>
                         <label>Number of Pastors Who Prayed
                             <h4>
