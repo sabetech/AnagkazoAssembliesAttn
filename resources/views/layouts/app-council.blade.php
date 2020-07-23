@@ -3,6 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="Council FLOW Forms">
+    <meta property="og:title" content="Council FLOW Forms" />
+    <meta property="og:description" content="Data about the FLOW prayer for the various councils" />
+    <meta property="og:image" itemprop="image" content="http://pollosweb.wesped.es/programa_pollos/play.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="1440432930" />
+
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
