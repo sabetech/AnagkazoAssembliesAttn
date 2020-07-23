@@ -99,7 +99,7 @@ class Council extends Model
             ->where('date_taken', $date)->get();
 
         foreach ($shepherdsWhoFlowed as $shepherdsRow) {
-            if ($shepherdsRow->shepherd_attendance_ids) {
+            if ($shepherdsRow->shepherd_attendance_ids != 'null') {
                 $totalShepherdsWhoFlowed += count(json_decode($shepherdsRow->shepherd_attendance_ids));
             }
         }
@@ -119,18 +119,18 @@ class Council extends Model
     public function getPastorsFlowRatio($date)
     {
         if ($this->getTotalPastors()->count() == 0) return 'N/a';
-        return $this->getPastorsWhoFlowed($date)->count();
+        return $this->getPastorsWhoFlowed($date)->count() . "/" . $this->getTotalPastors()->count();
     }
 
     public function getMinisterShepheredFlowRatio($date)
     {
         if ($this->getTotalMinisterShepherds()->count() == 0) return 'N/a';
-        return $this->getMinisterShepherdsWhoFlowed($date)->count();
+        return $this->getMinisterShepherdsWhoFlowed($date)->count() . "/" . $this->getTotalMinisterShepherds()->count();
     }
 
     public function getGWO_FlowRatio($date)
     {
         if ($this->getTotalGWOs()->count() == 0) return 'N/a';
-        return $this->getGWOwhoFlowed($date)->count();
+        return $this->getGWOwhoFlowed($date)->count() . "/" . $this->getTotalGWOs()->count();
     }
 }

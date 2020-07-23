@@ -57,8 +57,8 @@
                         <label>Number of Pastors Who Prayed
                             <h4>
                                 <span class="badge badge-primary">
-                                    {{ $council->getPastorsFlowRatio($date) }} /
-                                    {{ $council->getTotalPastors()->count() }}
+                                    {{ $council->getPastorsFlowRatio($date) }}
+
                                 </span>
                             </h4>
                         </label>
@@ -66,15 +66,14 @@
                             <h4>
                                 <span class="badge badge-secondary">
                            {{ $council->getMinisterShepheredFlowRatio($date) }}
-                         / {{ $council->getTotalMinisterShepherds()->count() }}
+
                                 </span>
                             </h4>
                         </label>
                         <label>Number of GWOs who prayed
                             <h4>
                                 <span class="badge badge-info">
-                                    {{ $council->getGWO_FlowRatio($date) }} /
-                                    {{ $council->getTotalGWOs()->count() }}
+                                    {{ $council->getGWO_FlowRatio($date) }}
                                 </span>
                             </h4>
                         </label>
