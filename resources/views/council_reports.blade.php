@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-council')
 @section('content')
 
 <div class="container">
@@ -30,7 +30,7 @@
                         </select> --}}
 
                         <div class="form-group">
-                            <button class="btn btn-primary" style="float:right;margin-top:1em;" type="submit">Export to Excel</button>
+                            {{-- <button class="btn btn-primary" style="float:right;margin-top:1em;" type="submit">Export to Excel</button> --}}
                         </div>
                     </div>
                 </form>
