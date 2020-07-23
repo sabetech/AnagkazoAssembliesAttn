@@ -89,8 +89,8 @@
                         <label>Number of Members who prayed
                             <h4>
                                 <span class="badge badge-warning">
-                                    {{ $council->getShepherdsWhoFlowed($date) }} /
-                                    {{ $council->getTotalShepherds()->count() }}
+                                    {{ $council->getTotalMembersWhoFlowed($date) }} /
+                                    {{ $council->getTotalMembersAvg() }}
                                 </span>
                             </h4>
                         </label>

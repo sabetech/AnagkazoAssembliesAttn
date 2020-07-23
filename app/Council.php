@@ -54,6 +54,11 @@ class Council extends Model
         return $this->shepherds;
     }
 
+    public function getTotalMembersAvg()
+    {
+        return $this->branches->sum('membership_avg');
+    }
+
     public function getPastorsWhoFlowed($date)
     {
         $pastorsWhoFlowed = CouncilAttendance::where('council_attendance.council_id', $this->id)
@@ -93,14 +98,21 @@ class Council extends Model
         $shepherdsWhoFlowed = CouncilAttendance::where('council_attendance.council_id', $this->id)
             ->where('date_taken', $date)->get();
 
-
-
         foreach ($shepherdsWhoFlowed as $shepherdsRow) {
             if ($shepherdsRow->shepherd_attendance_ids) {
                 $totalShepherdsWhoFlowed += count(json_decode($shepherdsRow->shepherd_attendance_ids));
             }
         }
         return $totalShepherdsWhoFlowed;
+    }
+
+    public function getTotalMembersWhoFlowed($date)
+    {
+        $membersWhoFlowed = CouncilAttendance::where('date_taken', $date)
+            ->where('council_id', $this->id)
+            ->sum('total_member_attendances');
+
+        return $membersWhoFlowed;
     }
 
 
