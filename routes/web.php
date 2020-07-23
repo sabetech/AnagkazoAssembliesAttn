@@ -37,6 +37,7 @@ Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm');
 
 
 Route::get('/getbranches', 'CouncilAttendanceController@getBranches');
+Route::get('/getpastors', 'CouncilAttendanceController@getPastors');
 
 Route::post('postCouncilAttendance', 'CouncilAttendanceController@postCouncilAttendance')
     ->name('postCouncilAttendance');

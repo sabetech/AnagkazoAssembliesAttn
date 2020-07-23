@@ -30,8 +30,8 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    @if($council_name)
-                    {{$council_name}} FLOW Prayer<br>Attendance Form
+                    @if(isset($council->council))
+                        {{$council->council}} FLOW Prayer<br>Attendance Form
                     @else
                     AA FLOW Prayer Meeting<br>
                     Attendance Form<br>

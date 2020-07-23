@@ -12,7 +12,7 @@
                     <form method="POST" action="{{ route('postCouncilAttendance') }}">
                         @csrf
 
-                        <h3>{{ $council_name }}</h3>
+                        <h3>{{ $council->council }}</h3>
                         <hr>
                         <div class="form-group row">
                             <label for="date" class="col-md-4 col-form-label text-md-right">Date</label>
@@ -98,6 +98,9 @@
     $(document).ready(function(){
         $.noConflict();
 
+        let branch_val = {};
+        let rank_val = {'id': 'Pastor'};
+
         $('.mission-find').select2({
             placeholder: 'Choose your Mission/Branch',
             ajax: {
@@ -106,11 +109,34 @@
 	            data: function (params) {
 	              var query = {
 	                search: params.term,
-                    council_id: data.id
+                    council_id: {!!$council->id!!}
 	              }
 	              return query;
 	            },
 	            processResults: function (data) {
+	              return {
+	                  results: data
+	              };
+	            }
+	        }
+        });
+
+        $('.person-find').select2({
+		    placeholder: 'Choose your name',
+            ajax: {
+	            url: '/getpastors',
+	            delay: 250,
+	            data: function (params) {
+	              var query = {
+	                search: params.term,
+                    council_id: {!!$council->id!!},
+                    branch: branch_val.id,
+                    rank: rank_val.id
+	              }
+	              return query;
+	            },
+	            processResults: function (data) {
+                    console.log(data);
 	              return {
 	                  results: data
 	              };
@@ -121,16 +147,19 @@
         $('.pastors-shepherds').select2({
             placeholder: 'Select Pastors or Shepherds who were absent',
             ajax: {
-	            url: '/getpastors',
+	            url: '/shepherds',
 	            delay: 250,
 	            data: function (params) {
 	              var query = {
 	                search: params.term,
-                    council_id: data.id
+                    council_id: {!!$council->id!!},
+                    branch: branch_val.id,
+                    rank: rank_val.id
 	              }
 	              return query;
 	            },
 	            processResults: function (data) {
+                    console.log(data);
 	              return {
 	                  results: data
 	              };
@@ -138,10 +167,8 @@
 	        }
         });
 
-
-        let data = {};
-        $('.council-find').on('select2:select', function (e) {
-            data = e.params.data;
+        $('.mission-find').on('select2:select', function (e) {
+            branch_val = e.params.data;
             $('.person-find').prop('disabled', false);
         });
 
@@ -163,6 +190,10 @@
                     {id:'GWO', text:'GWO'},
                 ]
         })
+
+        $(".rank").on('select2:select', function(e){
+            rank_val = e.params.data;
+        });
 
     });
 

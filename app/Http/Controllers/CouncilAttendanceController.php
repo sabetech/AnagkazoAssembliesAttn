@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
 use App\Council;
+use App\Person;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class CouncilAttendanceController extends Controller
 
         //if we dont get council, we are screewed ...
         return view('council-data')
-            ->with('council_name', $council->council);
+            ->with('council', $council);
     }
 
 
@@ -23,12 +25,22 @@ class CouncilAttendanceController extends Controller
     public function getBranches(Request $request)
     {
         $council_id = $request->get('council_id');
+        $search = $request->get('search');
 
-        $data = new Collection([
-            ['id' => 1, 'text' => 'Bouake'],
-            ['id' => 2, 'text' => 'Another Option']
-        ]);
+        $branches = Branch::searchBranch($council_id, $search);
 
-        return response()->json($data);
+        return response()->json($branches);
+    }
+
+    public function getPastors(Request $request)
+    {
+        $search = $request->get('search');
+        $council_id = $request->get('council_id');
+        $rank = $request->get('rank');
+        $branch = $request->get('branch');
+
+        $person = Person::search($search, $council_id, $branch, $rank);
+
+        return response()->json($person);
     }
 }
