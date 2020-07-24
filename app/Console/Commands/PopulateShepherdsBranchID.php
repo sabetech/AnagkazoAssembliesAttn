@@ -39,7 +39,7 @@ class PopulateShepherdsBranchID extends Command
     public function handle()
     {
         //
-        $shepherd_branches = storage_path('app/public/files/shepherds_branches_2.csv');
+        $shepherd_branches = storage_path('app/public/files/shepherds_santa_maria.csv');
         $row = 0;
 
         if (($handle = fopen($shepherd_branches, "r")) !== FALSE) {
