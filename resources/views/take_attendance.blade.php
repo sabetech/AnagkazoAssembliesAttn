@@ -43,7 +43,7 @@
                             <label for="date" class="col-md-4 col-form-label text-md-right">Date</label>
 
                             <div class="">
-                                <input id="date" type="hidden" name="date" style="width:15em;">
+                            <input id="date" type="hidden" name="date" style="width:15em;" value="{{ date('Y-m-d') }}">
                                 <label class="form-control">{{ date("F d, Y") }}</label>
 
                             </div>

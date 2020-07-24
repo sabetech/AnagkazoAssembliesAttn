@@ -39,7 +39,7 @@ class PopulateShepherdsBranchID extends Command
     public function handle()
     {
         //
-        $shepherd_branches = storage_path('app/public/files/shepherds_branches.csv');
+        $shepherd_branches = storage_path('app/public/files/shepherds_branches_2.csv');
         $row = 0;
 
         if (($handle = fopen($shepherd_branches, "r")) !== FALSE) {
@@ -49,7 +49,8 @@ class PopulateShepherdsBranchID extends Command
 
                 Shepherd::create([
                     'shepherd_name' => $data[0],
-                    'branch_id' => $data[2]
+                    'branch_id' => $data[2],
+                    'council_id' => 3
                 ]);
 
                 echo "{$row}. {$data[0]} {$data[1]}\n";
