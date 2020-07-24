@@ -50,7 +50,7 @@ class PopulateShepherdsBranchID extends Command
                 Shepherd::create([
                     'shepherd_name' => $data[0],
                     'branch_id' => $data[2],
-                    'council_id' => 3
+                    'council_id' => $data[3]
                 ]);
 
                 echo "{$row}. {$data[0]} {$data[1]}\n";
