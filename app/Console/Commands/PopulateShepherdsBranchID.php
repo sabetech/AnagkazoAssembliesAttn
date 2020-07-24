@@ -12,7 +12,7 @@ class PopulateShepherdsBranchID extends Command
      *
      * @var string
      */
-    protected $signature = 'shepherds:populate_shepherd_branch_id';
+    protected $signature = 'shepherds:populate_shepherd_branch_id {council_shepherd_file}';
 
     /**
      * The console command description.
@@ -39,7 +39,8 @@ class PopulateShepherdsBranchID extends Command
     public function handle()
     {
         //
-        $shepherd_branches = storage_path('app/public/files/shepherds_santa_maria.csv');
+        $council_shepherd_file = $this->argument('council_shepherd_file');
+        $shepherd_branches = storage_path("app/public/files/{$council_shepherd_file}.csv");
         $row = 0;
 
         if (($handle = fopen($shepherd_branches, "r")) !== FALSE) {
