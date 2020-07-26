@@ -48,6 +48,15 @@ Route::Get('/council/nyanyanor', function () {
     return redirect()->route('council_attendance_form', 4);
 });
 
+Route::Get('/council/yopougon', function () {
+    return redirect()->route('council_attendance_form', 13);
+});
+
+Route::Get('/council/divo', function () {
+    return redirect()->route('council_attendance_form', 14);
+});
+
+
 
 Route::get('/council/report', 'CouncilAttendanceController@report');
 Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm')->name('council_attendance_form');
