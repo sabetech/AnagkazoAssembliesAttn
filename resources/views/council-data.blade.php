@@ -72,7 +72,7 @@
                             HOW MANY OF YOUR MEMBERS PARTICIPATED IN THE FLOW TODAY?
                             </label>
 
-                            <input type="number" name="flow_member_attendance" />
+                            <input type="number" name="flow_member_attendance" placeholder="0" required/>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="float:right;">
