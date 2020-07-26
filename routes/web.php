@@ -32,6 +32,13 @@ Route::post('/export', 'AttendanceController@exportAttendance');
 Route::get('/council/bantama', function () {
     return redirect()->route('council_attendance_form', 3);
 });
+Route::Get('/council/santa-maria', function () {
+    return redirect()->route('council_attendance_form', 8);
+});
+
+Route::Get('/council/awoshie', function () {
+    return redirect()->route('council_attendance_form', 2);
+});
 
 Route::get('/council/report', 'CouncilAttendanceController@report');
 Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm')->name('council_attendance_form');
