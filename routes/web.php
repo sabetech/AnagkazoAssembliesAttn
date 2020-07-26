@@ -56,6 +56,10 @@ Route::Get('/council/divo', function () {
     return redirect()->route('council_attendance_form', 14);
 });
 
+Route::Get('/council/india', function () {
+    return redirect()->route('council_attendance_form', 15);
+});
+
 
 
 Route::get('/council/report', 'CouncilAttendanceController@report');
