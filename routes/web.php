@@ -40,7 +40,7 @@ Route::Get('/council/awoshie', function () {
     return redirect()->route('council_attendance_form', 2);
 });
 
-Route::Get('/council/BINGERVILLE', function () {
+Route::Get('/council/bingerville', function () {
     return redirect()->route('council_attendance_form', 10);
 });
 
