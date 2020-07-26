@@ -40,6 +40,12 @@ Route::Get('/council/awoshie', function () {
     return redirect()->route('council_attendance_form', 2);
 });
 
+Route::Get('/council/BINGERVILLE', function () {
+    return redirect()->route('council_attendance_form', 10);
+});
+
+
+
 Route::get('/council/report', 'CouncilAttendanceController@report');
 Route::get('/council/{id}', 'CouncilAttendanceController@getCouncilForm')->name('council_attendance_form');
 
