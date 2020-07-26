@@ -33,6 +33,10 @@ Route::get('/council/bantama', function () {
     return redirect()->route('council_attendance_form', 3);
 });
 
+Route::Get('/council/bouake', function () {
+    return redirect()->route('council_attendance_form', 12);
+});
+
 Route::Get('/council/burkina', function () {
     return redirect()->route('council_attendance_form', 11);
 });
