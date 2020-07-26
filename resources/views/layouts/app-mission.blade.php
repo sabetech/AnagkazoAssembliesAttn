@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:site_name" content="{{ $council->council }} FLOW Forms">
-    <meta property="og:title" content="{{ $council->council }} FLOW Forms" />
-    <meta property="og:description" content="Data about the FLOW prayer for the various councils" />
+    <meta property="og:site_name" content="MISSION FLOW Forms">
+    <meta property="og:title" content="MISSION FLOW Forms" />
+    <meta property="og:description" content="Data about the FLOW prayer for the various Missions" />
     <meta property="og:image" itemprop="image" content="https://images.unsplash.com/photo-1521178010706-baefe2334211?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80">
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="1440432930" />
@@ -15,7 +15,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $council->council }} FLOW Prayer<br>Attendance Form
+    <title>Mission FLOW Prayer<br>Attendance Form
 </title>
 
     <!-- Scripts -->
@@ -41,7 +41,7 @@
                     @if(isset($page_title))
                         {{$page_title}}
                         @else
-                        {{ $council->council }} FLOW Prayer<br>Attendance Form
+                        Mission FLOW Prayer<br>Attendance Form
                     @endif
 
                 </a>

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 {{-- @if($formStatus->form_status) --}}
-                <div class="card-header">Council Attendance for {{ date('M d, Y') }}</div>
+                <div class="card-header">{{ $council->council }} Attendance for {{ date('M d, Y') }}</div>
 
                 <div class="card-body" style="margin:auto">
                     <form method="POST" action="{{ route('postCouncilAttendance') }}">
