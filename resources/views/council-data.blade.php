@@ -60,7 +60,7 @@
                             <select class="form-control pastors-shepherds"
                             id="pastors-shepherds" name="pastors-shepherds[]"
                             style="width:15em;" multiple='multiple' disabled>
-
+                                <option>N/a</option>
                             </select>
                         </div>
 
@@ -72,7 +72,7 @@
                             HOW MANY OF YOUR MEMBERS PARTICIPATED IN THE FLOW TODAY?
                             </label>
 
-                            <input type="number" name="flow_member_attendance" placeholder="0" required/>
+                            <input type="number" name="flow_member_attendance" placeholder="N/a"/>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="float:right;">

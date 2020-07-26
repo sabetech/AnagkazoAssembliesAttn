@@ -62,7 +62,7 @@ class CouncilAttendanceController extends Controller
         $date_taken = $request->get('date');
         $person_id = $request->get('person_name');
         $shepherds = $request->get('pastors-shepherds');
-        $member_count = $request->get('flow_member_attendance');
+        $member_count = $request->get('flow_member_attendance', 0);
         $branch_id = $request->get('mission');
         $council_id = $request->get('council_id');
 
@@ -79,7 +79,7 @@ class CouncilAttendanceController extends Controller
                 'council_id' => $council->id,
                 'branch_id' => $branch->id,
                 'shepherd_attendance_ids' => json_encode($shepherds),
-                'total_member_attendances' => $member_count
+                'total_member_attendances' => ($member_count) ? $member_count : 0
             ]
         );
 
