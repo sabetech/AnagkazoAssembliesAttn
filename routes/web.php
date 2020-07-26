@@ -44,6 +44,9 @@ Route::Get('/council/bingerville', function () {
     return redirect()->route('council_attendance_form', 10);
 });
 
+Route::Get('/council/nyanyanor', function () {
+    return redirect()->route('council_attendance_form', 4);
+});
 
 
 Route::get('/council/report', 'CouncilAttendanceController@report');
