@@ -50,7 +50,8 @@ class populate_shepherds_table extends Command
 
                 Shepherd::create([
                     'shepherd_name' => $data[0],
-                    'person_id' => $data[2]
+                    'person_id' => $data[2],
+                    'council_id' => $data[3]
                 ]);
 
                 echo "{$row}. {$data[0]} {$data[1]}\n";
