@@ -81,6 +81,10 @@ Route::Get('/council/asokwa', function () {
     return redirect()->route('council_attendance_form', 9);
 });
 
+Route::Get('/council/abeka', function () {
+    return redirect()->route('council_attendance_form', 1);
+});
+
 
 
 
