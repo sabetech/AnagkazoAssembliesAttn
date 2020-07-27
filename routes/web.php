@@ -33,6 +33,14 @@ Route::get('/council/bantama', function () {
     return redirect()->route('council_attendance_form', 3);
 });
 
+Route::get('/council/ofaakor', function () {
+    return redirect()->route('council_attendance_form', 5);
+});
+
+Route::get('/council/ayeduase', function () {
+    return redirect()->route('council_attendance_form', 7);
+});
+
 Route::Get('/council/bouake', function () {
     return redirect()->route('council_attendance_form', 12);
 });
@@ -68,6 +76,11 @@ Route::Get('/council/divo', function () {
 Route::Get('/council/india', function () {
     return redirect()->route('council_attendance_form', 15);
 });
+
+Route::Get('/council/asokwa', function () {
+    return redirect()->route('council_attendance_form', 9);
+});
+
 
 
 
