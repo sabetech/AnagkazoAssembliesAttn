@@ -12,7 +12,7 @@ class populate_shepherds_table extends Command
      *
      * @var string
      */
-    protected $signature = 'shepherds:populate_shepherds_table_from_file';
+    protected $signature = 'shepherds:populate_shepherds_table_from_file {shepherd_pastor_file}';
 
     /**
      * The console command description.
@@ -39,7 +39,8 @@ class populate_shepherds_table extends Command
     public function handle()
     {
         //
-        $person_data_branch_File = storage_path('app/public/files/shepherds.csv');
+        $shepherd_pastor_file = $this->argument('shepherd_pastor_file');
+        $person_data_branch_File = storage_path("app/public/files/{$shepherd_pastor_file}.csv");
         $row = 0;
 
         if (($handle = fopen($person_data_branch_File, "r")) !== FALSE) {
