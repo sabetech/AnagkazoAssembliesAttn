@@ -85,7 +85,9 @@ Route::Get('/council/abeka', function () {
     return redirect()->route('council_attendance_form', 1);
 });
 
-
+Route::Get('/council/sowutuom', function () {
+    return redirect()->route('council_attendance_form', 6);
+});
 
 
 Route::get('/council/report', 'CouncilAttendanceController@report');
