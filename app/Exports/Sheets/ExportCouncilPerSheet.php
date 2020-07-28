@@ -42,9 +42,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
             $exportArray[] = $row;
         }
 
-
-
-        return [];
+        return $exportArray;
     }
 
     public function headings(): array
@@ -88,6 +86,6 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
      */
     public function title(): string
     {
-        return 'Month ' . $this->council->council;
+        return $this->council->council;
     }
 }
