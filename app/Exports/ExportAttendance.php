@@ -24,16 +24,16 @@ class ExportAttendance implements FromArray
         $exportArray = [];
         $exportArray[] = ['Name', 'Council', 'Status', 'TV or Online'];
 
-        foreach($allPersons as $person){
+        foreach ($allPersons as $person) {
             $row = [];
             if ($this->filter_option == 'filled') {
-                if (! $person->wasPresent($this->date)){
+                if (!$person->wasPresent($this->date)) {
                     continue;
                 }
             }
 
             if ($this->filter_option == 'not_filled') {
-                if ($person->wasPresent($this->date)){
+                if ($person->wasPresent($this->date)) {
                     continue;
                 }
             }
@@ -42,7 +42,7 @@ class ExportAttendance implements FromArray
             $row[] = $person->Council->council;
             $row[] = ($person->wasPresent($this->date) ? "Form Filled" : "Form Not Filled");
             $row[] = $person->tvOrOnline($this->date);
-            
+
             $exportArray[] = $row;
         }
 

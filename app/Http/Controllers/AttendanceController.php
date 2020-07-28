@@ -15,7 +15,7 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $formStatus = ToggleForm::first();
+        $formStatus = ToggleForm::where('id', 1)->first();
         return view('take_attendance')
             ->with('formStatus', $formStatus);
     }
@@ -77,7 +77,7 @@ class AttendanceController extends Controller
         }
 
         $allPersons = Person::getAllPerson();
-        $formStatus = ToggleForm::first();
+        $formStatus = ToggleForm::where('id', 1)->first();
 
         return view('results')
             ->with('date', $date_filter)
@@ -88,8 +88,7 @@ class AttendanceController extends Controller
 
     public function toggleForm(Request $request)
     {
-
-        ToggleForm::toggleForm();
+        ToggleForm::toggleForm(1);
         return response()->json(['state' => true]);
     }
 

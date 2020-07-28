@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'toggle-form'
+        '/council/toggle-form-council',
+        'toggle-form-basic'
     ];
 }

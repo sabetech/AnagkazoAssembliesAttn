@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                {{-- @if($formStatus->form_status) --}}
+                @if($formStatus->form_status)
                 <div class="card-header">{{ $council->council }} Attendance for {{ date('M d, Y') }}</div>
 
                 <div class="card-body" style="margin:auto">
@@ -81,9 +81,9 @@
 
                     </form>
                 </div>
-                {{-- @else
+                @else
                     <div class="card-header">Form is currently Closed</div>
-                @endif --}}
+                @endif
             </div>
         </div>
     </div>

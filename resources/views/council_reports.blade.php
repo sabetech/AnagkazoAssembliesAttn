@@ -13,13 +13,13 @@
 
                         <div class="custom-control custom-switch">
 
-                            {{-- @if ($formStatus->form_status == true)
+                            @if ($formStatus->form_status == true)
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
+                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Council Form is Opened</label>
                             @else
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Closed</label>
-                            @endif --}}
+                                <label class="custom-control-label" for="customSwitch1" id="lock-label">Council Form is Closed</label>
+                            @endif
 
                         </div>
                     </div>
@@ -116,8 +116,8 @@
 
         $("#customSwitch1").change(function(){
 
-            $("#lock-label").text( ($(this).is(':checked')) ? 'Form is Closed' : 'Form is Opened' );
-            $.post('toggle-form', function(response){
+            $("#lock-label").text( ($(this).is(':checked')) ? 'Council Form is Closed' : 'Council Form is Opened' );
+            $.post('toggle-form-council', function(response){
 
             });
 

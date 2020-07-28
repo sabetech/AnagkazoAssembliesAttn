@@ -113,7 +113,8 @@
         $("#customSwitch1").change(function(){
 
             $("#lock-label").text( ($(this).is(':checked')) ? 'Form is Closed' : 'Form is Opened' );
-            $.post('toggle-form', function(response){
+            $.post('toggle-form-basic',
+             function(response){
 
             });
 

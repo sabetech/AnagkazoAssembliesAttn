@@ -16,6 +16,11 @@ class Person extends Model
         return $this->belongsTo('App\Council');
     }
 
+    public function Branch()
+    {
+        return $this->belongsTo('App\Branch', 'branch_id', 'id');
+    }
+
     public static function search($name, $council_id = '', $branch_id = '', $rank = '')
     {
 
@@ -59,5 +64,9 @@ class Person extends Model
         if ($person)
             return $person->flow_option;
         return 'none';
+    }
+
+    public function wasPresent_council($date)
+    {
     }
 }

@@ -10,6 +10,11 @@ class Council extends Model
     protected $table = 'councils';
     protected $guarded = ['id'];
 
+    public function persons()
+    {
+        return $this->hasMany('App\Person');
+    }
+
     public function branches()
     {
         return $this->hasMany('App\Branch', 'council_id', 'id');

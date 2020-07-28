@@ -22,7 +22,8 @@ Route::get('/getpersons', 'AttendanceController@searchPerson');
 Route::get('/getcouncils', 'AttendanceController@searchCouncil');
 Route::post('postattendance', 'AttendanceController@postAttendance')->name('postAttendance');
 Route::get('/attendance_report', 'AttendanceController@attendanceReport')->name('attendanceReport');
-Route::post('toggle-form', 'AttendanceController@toggleForm');
+Route::post('toggle-form-basic', 'AttendanceController@toggleForm');
+Route::post('council/toggle-form-council', 'CouncilAttendanceController@toggleForm');
 //Route::get('/filter_option', 'AttendanceController@filter');
 Route::post('/export', 'AttendanceController@exportAttendance');
 

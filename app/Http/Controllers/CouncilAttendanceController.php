@@ -7,7 +7,7 @@ use App\Council;
 use App\CouncilAttendance;
 use App\Person;
 use App\Shepherd;
-use Illuminate\Database\Eloquent\Collection;
+use App\ToggleForm;
 use Illuminate\Http\Request;
 
 class CouncilAttendanceController extends Controller
@@ -16,9 +16,11 @@ class CouncilAttendanceController extends Controller
     public function getCouncilForm($id)
     {
         $council = Council::find($id);
+        $formStatus = ToggleForm::where('id', 2)->first();
 
         //if we dont get council, we are screewed ...
         return view('council-data')
+            ->with('formStatus', $formStatus)
             ->with('council', $council);
     }
 
@@ -97,10 +99,18 @@ class CouncilAttendanceController extends Controller
 
         //get All councils and get all get council reports
         $councils = Council::all();
+        $formStatus = ToggleForm::where('id', 1)->first();
 
         return view('council_reports')
             ->with('councils', $councils)
+            ->with('formStatus', $formStatus)
             ->with('page_title', "Council FLOW Report")
             ->with('date', $date);
+    }
+
+    public function toggleForm(Request $request)
+    {
+        ToggleForm::toggleForm(2);
+        return response()->json(['state' => true]);
     }
 }

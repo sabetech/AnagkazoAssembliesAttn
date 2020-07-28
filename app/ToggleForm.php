@@ -9,8 +9,9 @@ class ToggleForm extends Model
     //
     protected $table = 'toggle_form';
 
-    public static function toggleForm(){
-        $existingState = ToggleForm::first();
-        ToggleForm::where('id',1)->update(['form_status' => !$existingState->form_status]);
+    public static function toggleForm($id)
+    {
+        $existingState = ToggleForm::where('id', $id)->first();
+        ToggleForm::where('id', $id)->update(['form_status' => !$existingState->form_status]);
     }
 }
