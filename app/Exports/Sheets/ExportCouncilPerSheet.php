@@ -25,7 +25,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $exportArray = [];
         $exportArray[] = $this->headings();
         $exportArray[] = $this->getFirstSummaries($this->council);
-        $exportArray[] = [];
+        $exportArray[] = ['' => ''];
         $exportArray[] = $this->getSecondHeadings();
 
         foreach ($this->council->persons as $person) {

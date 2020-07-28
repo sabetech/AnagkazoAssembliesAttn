@@ -73,8 +73,8 @@ class Person extends Model
             ->first();
 
         if ($person)
-            return true;
-        return false;
+            return 'YES';
+        return 'NO';
     }
 
     public function getNumberOfShepherdsPresent($date)
@@ -83,11 +83,11 @@ class Person extends Model
             ->where('person_id', $this->id)
             ->first();
 
-        if (!$shepherds) return 0;
+        if (!$shepherds) return '0';
 
         if ($shepherds->shepherd_attendance_ids != 'null')
             return count(json_decode($shepherds->shepherd_attendance_ids));
-        return 0;
+        return '0';
     }
 
     public function getNumberOfMembersPresent($date)
@@ -99,5 +99,6 @@ class Person extends Model
 
         if ($numberOfMembers)
             return $numberOfMembers->total_member_attendances;
+        return '0';
     }
 }
