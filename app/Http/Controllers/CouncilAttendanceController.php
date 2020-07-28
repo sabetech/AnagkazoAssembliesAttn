@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Branch;
 use App\Council;
 use App\CouncilAttendance;
+use App\Exports\ExportCouncilData;
 use App\Person;
 use App\Shepherd;
 use App\ToggleForm;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CouncilAttendanceController extends Controller
 {
@@ -112,5 +114,13 @@ class CouncilAttendanceController extends Controller
     {
         ToggleForm::toggleForm(2);
         return response()->json(['state' => true]);
+    }
+
+    public function export(Request $request)
+    {
+        $date = $request->get('date_filter');
+
+        $exportCouncilAttendance = new ExportCouncilData($date);
+        return Excel::download($exportCouncilAttendance, "AA_COUNCIL_ATTENANCE_{$date}.xlsx");
     }
 }

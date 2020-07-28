@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="POST" action="export">
+            <form method="POST" action="export-council">
                 @csrf
                 <div class="card">
                     <div class="card-header" >
@@ -30,7 +30,7 @@
                         </select> --}}
 
                         <div class="form-group">
-                            {{-- <button class="btn btn-primary" style="float:right;margin-top:1em;" type="submit">Export to Excel</button> --}}
+                            <button class="btn btn-primary" style="float:right;margin-top:1em;" type="submit">Export to Excel</button>
                         </div>
                     </div>
                 </form>

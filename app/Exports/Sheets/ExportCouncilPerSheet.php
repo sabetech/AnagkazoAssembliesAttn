@@ -26,14 +26,18 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $exportArray[] = $this->headings();
         $exportArray[] = $this->getFirstSummaries($this->council);
         $exportArray[] = [];
+        $exportArray[] = $this->getSecondHeadings();
 
         foreach ($this->council->persons as $person) {
 
             $row = [];
             $row[] = $person->name;
             $row[] = $person->rank;
-            $row[] = $person->Branch->branch_name;
+            $row[] = (isset($person->Branch)) ? $person->Branch->branch_name : "";
             $row[] = $person->Council->council;
+            $row[] = $person->wasPresent_council($this->date);
+            $row[] = $person->getNumberOfShepherdsPresent($this->date);
+            $row[] = $person->getNumberOfMembersPresent($this->date);
 
             $exportArray[] = $row;
         }
@@ -64,6 +68,19 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $row[] = $council->getTotalMembersWhoFlowed($this->date) . '/' . $council->getTotalMembersAvg();
 
         return $row;
+    }
+
+    public function getSecondHeadings(): array
+    {
+        return [
+            'Name',
+            'Rank',
+            'Branch',
+            'Council',
+            'Was Present',
+            'Number of Spepherds Who Watched',
+            'Number of Members Who Watched'
+        ];
     }
 
     /**

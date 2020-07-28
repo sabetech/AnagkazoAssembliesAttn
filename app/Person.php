@@ -68,5 +68,36 @@ class Person extends Model
 
     public function wasPresent_council($date)
     {
+        $person = CouncilAttendance::where('date_taken', $date)
+            ->where('person_id', $this->id)
+            ->first();
+
+        if ($person)
+            return true;
+        return false;
+    }
+
+    public function getNumberOfShepherdsPresent($date)
+    {
+        $shepherds = CouncilAttendance::where('date_taken', $date)
+            ->where('person_id', $this->id)
+            ->first();
+
+        if (!$shepherds) return 0;
+
+        if ($shepherds->shepherd_attendance_ids != 'null')
+            return count(json_decode($shepherds->shepherd_attendance_ids));
+        return 0;
+    }
+
+    public function getNumberOfMembersPresent($date)
+    {
+
+        $numberOfMembers = CouncilAttendance::where('date_taken', $date)
+            ->where('person_id', $this->id)
+            ->first();
+
+        if ($numberOfMembers)
+            return $numberOfMembers->total_member_attendances;
     }
 }

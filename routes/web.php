@@ -26,6 +26,7 @@ Route::post('toggle-form-basic', 'AttendanceController@toggleForm');
 Route::post('council/toggle-form-council', 'CouncilAttendanceController@toggleForm');
 //Route::get('/filter_option', 'AttendanceController@filter');
 Route::post('/export', 'AttendanceController@exportAttendance');
+Route::post('/council/export-council', 'CouncilAttendanceController@export');
 
 
 
