@@ -13,7 +13,7 @@
 
                         <div class="custom-control custom-switch">
 
-                            @if ($formStatus->form_status != true)
+                            @if ($formStatus->form_status == true)
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                 <label class="custom-control-label" for="customSwitch1" id="lock-label">Form is Opened</label>
                             @else
