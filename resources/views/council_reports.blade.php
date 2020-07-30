@@ -130,7 +130,7 @@
                                 <h4>
                                     <span class="badge badge-dark">
                                         {{ $branch->getShepherdsWhoFlowed($date) }} /
-                                        {{ $branch->getTotalShepherds()->count() }}
+                                        {{ $branch->getTotalShepherds() }}
                                     </span>
                                 </h4>
                             </label><br>
