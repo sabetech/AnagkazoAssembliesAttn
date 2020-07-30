@@ -137,8 +137,7 @@
                             <label>Number of Members who prayed
                                 <h4>
                                     <span class="badge badge-warning">
-                                        {{ $branch->getTotalMembersWhoFlowed($date) }} /
-                                        {{ $branch->getTotalMembersAvg() }}
+                                        {{ $branch->getTotalMembersWhoFlowed($date) }}
                                     </span>
                                 </h4>
                             </label>
