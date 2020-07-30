@@ -100,7 +100,7 @@
                     <li>
                         <div class="media-body shadow-sm p-3 mb-5 bg-white rounded">
                             <h5 class="mt-0 mb-1">
-                                {{ $branch->branch_name }}<br>
+                            {{ $branch->branch_name }} - {{ $council->council}}<br>
                                 <label class="">{{ date("F d, Y", strtotime($date)) }}</label>
                             </h5>
                         <label>Number of Pastors Who Prayed
