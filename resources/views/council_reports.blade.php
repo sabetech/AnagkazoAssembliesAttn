@@ -122,7 +122,7 @@
                             <label>Number of GWOs who prayed
                                 <h4>
                                     <span class="badge badge-info">
-                                        {{ $branch->getGWO_FlowRatio($date) }}
+                                        {{ $branch->getGWOwhoFlowed($date) }}
                                     </span>
                                 </h4>
                             </label><br>
