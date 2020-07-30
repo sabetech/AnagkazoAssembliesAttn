@@ -94,6 +94,61 @@
                     </div>
 
                   </li>
+
+                  @if ($council->id == 5)
+                    @foreach($council->branches as $branch)
+                    <li>
+                        <div class="media-body shadow-sm p-3 mb-5 bg-white rounded">
+                            <h5 class="mt-0 mb-1">
+                                {{ $branch->branch_name }}<br>
+                                <label class="">{{ date("F d, Y", strtotime($date)) }}</label>
+                            </h5>
+                        <label>Number of Pastors Who Prayed
+                            <h4>
+                                <span class="badge badge-primary">
+                                    {{ $branch->getPastorsFlowRatio($date) }}
+
+                                </span>
+                            </h4>
+                        </label><br>
+                            <label>Number of Minister shepherds who prayed
+                                <h4>
+                                    <span class="badge badge-secondary">
+                            {{ $branch->getMinisterShepheredFlowRatio($date) }}
+
+                                    </span>
+                                </h4>
+                            </label><br>
+                            <label>Number of GWOs who prayed
+                                <h4>
+                                    <span class="badge badge-info">
+                                        {{ $branch->getGWO_FlowRatio($date) }}
+                                    </span>
+                                </h4>
+                            </label><br>
+                            <label>Number of Shepherds who prayed
+                                <h4>
+                                    <span class="badge badge-dark">
+                                        {{ $branch->getShepherdsWhoFlowed($date) }} /
+                                        {{ $branch->getTotalShepherds()->count() }}
+                                    </span>
+                                </h4>
+                            </label><br>
+                            <label>Number of Members who prayed
+                                <h4>
+                                    <span class="badge badge-warning">
+                                        {{ $branch->getTotalMembersWhoFlowed($date) }} /
+                                        {{ $branch->getTotalMembersAvg() }}
+                                    </span>
+                                </h4>
+                            </label>
+
+                        </div>
+
+                    </li>
+                    @endif
+                  @endif
+
                   @endforeach
 
                 </ul>
