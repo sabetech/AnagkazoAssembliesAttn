@@ -146,7 +146,7 @@
                         </div>
 
                     </li>
-                    @endif
+                    @endforeach
                   @endif
 
                   @endforeach
