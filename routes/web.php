@@ -29,6 +29,8 @@ Route::post('/export', 'AttendanceController@exportAttendance');
 Route::post('/council/export-council', 'CouncilAttendanceController@export');
 
 
+//temp route
+Route::get('/council/get-list-of_defaulters', 'CouncilAttendanceController@defaulters');
 
 ///Councils ...
 Route::get('/council/bantama', function () {

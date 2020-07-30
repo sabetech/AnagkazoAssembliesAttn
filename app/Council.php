@@ -111,6 +111,20 @@ class Council extends Model
         return $totalShepherdsWhoFlowed;
     }
 
+    public function getDefaultingPastors($date)
+    {
+        foreach ($this->persons as $person) {
+        }
+    }
+
+    public function getDefaultingShepherds($date)
+    {
+        foreach ($this->shepherds as $shepherd) {
+        }
+
+        //$shepherdsWhoFlowed
+    }
+
     public function getTotalMembersWhoFlowed($date)
     {
         $membersWhoFlowed = CouncilAttendance::where('date_taken', $date)

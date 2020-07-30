@@ -123,4 +123,17 @@ class CouncilAttendanceController extends Controller
         $exportCouncilAttendance = new ExportCouncilData($date);
         return Excel::download($exportCouncilAttendance, "AA_COUNCIL_ATTENANCE_{$date}.xlsx");
     }
+
+    public function defaulters(Request $request)
+    {
+
+        $date = $request->get('date');
+        $councils = Council::all();
+
+        foreach ($councils as $council) {
+
+            // $persons
+
+        }
+    }
 }
