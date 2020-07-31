@@ -40,7 +40,7 @@ class Branch extends Model
             ->where('council_attendance.date_taken', $date)
             ->get();
 
-        $totalPastors = $this->persons()->where('rank', '=', 'Pastors')->count();
+        $totalPastors = $this->persons()->where('rank', '=', 'Pastor')->count();
 
         return $pastorsWhoFlowed->count() . ' / ' . $totalPastors;
     }
