@@ -33,6 +33,17 @@
                             </div>
                         </div>
 
+                        @if ($council->council == 'OFAAKOR COUNCIL')
+                        <div class="form-group row">
+                            <label for="mission" class="col-md-4 col-form-label text-md-right">Branch</label>
+                            <div class="">
+                                <select class="form-control mission-branch-find" id="mission" name="mission" style="width:15em;">
+
+                                </select>
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="form-group row">
                             <label for="rank" class="col-md-4 col-form-label text-md-right">Rank</label>
                             <div class="">
@@ -192,6 +203,7 @@
                     {id:'Pastor', text:'Pastor'},
                     {id:'Minister Shepherd', text:'Minister Shepherd'},
                     {id:'GWO', text:'GWO'},
+                    {id:'Center Overseer', text:'Center Overseer'},
                 ]
         })
 
