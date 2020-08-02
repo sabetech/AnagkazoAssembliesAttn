@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label for="mission" class="col-md-4 col-form-label text-md-right">Branch</label>
                             <div class="">
-                                <select class="form-control mission-branch-find" id="mission" name="mission-branch" style="width:15em;">
+                                <select class="form-control mission-branch-find" id="mission" name="mission-branch" style="width:15em;" disabled>
 
                                 </select>
                             </div>
@@ -113,6 +113,7 @@
         let branch_val = {};
         let rank_val = {'id': 'Pastor'};
         let person = {};
+        let subMission = {};
 
         $('.mission-find').select2({
             placeholder: 'Choose your Mission/Branch',
@@ -160,6 +161,12 @@
             person = e.params.data;
             $('.pastors-shepherds').prop('disabled', false);
         });
+
+        $('.mission-find').on('select2:select', function (e){
+            subMission = e.param.data;
+            $('.mission-branch-find').prop('disabled', false);
+        });
+
 
         $('.mission-branch-find').select2({
             placeholder: 'Choose mission branch',
