@@ -28,6 +28,9 @@ Route::post('council/toggle-form-council', 'CouncilAttendanceController@toggleFo
 Route::post('/export', 'AttendanceController@exportAttendance');
 Route::post('/council/export-council', 'CouncilAttendanceController@export');
 
+Route::get('/verify-submission/{token}', 'CouncilAttendanceController@verify_submission');
+
+Route::get('/mission-branch', 'CouncilAttendanceController@getMission_branch');
 
 //temp route
 Route::get('/council/get-list-of_defaulters', 'CouncilAttendanceController@defaulters');

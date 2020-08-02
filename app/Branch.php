@@ -15,11 +15,22 @@ class Branch extends Model
 
     public static function searchBranch($council_id, $searchTerm)
     {
+        if ($council_id == 5) {
+            return self::getOfaakorBranches($searchTerm);
+        }
+
         $branches = Branch::where('council_id', $council_id)
             ->where('branch_name', 'LIKE', '%' . $searchTerm . '%')
             ->select(['id', 'branch_name as text'])->get();
 
         return $branches;
+    }
+
+    public static function getOfaakorBranches($search)
+    {
+        return Council::where('id', '>=', 10)
+            ->where('council', 'LIKE', '%' . $search . '%')
+            ->select(['id', 'council as text'])->get();
     }
 
     public function persons()

@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label for="mission" class="col-md-4 col-form-label text-md-right">Branch</label>
                             <div class="">
-                                <select class="form-control mission-branch-find" id="mission" name="mission" style="width:15em;">
+                                <select class="form-control mission-branch-find" id="mission" name="mission-branch" style="width:15em;">
 
                                 </select>
                             </div>
@@ -159,6 +159,26 @@
         $('.person-find').on('select2:select', function(e){
             person = e.params.data;
             $('.pastors-shepherds').prop('disabled', false);
+        });
+
+        $('.mission-branch-find').select2({
+            placeholder: 'Choose mission branch',
+            ajax: {
+	            url: '/getbranches',
+	            delay: 250,
+	            data: function (params) {
+	              var query = {
+	                search: params.term,
+                    council_id: {!!$council->id!!}
+	              }
+	              return query;
+	            },
+	            processResults: function (data) {
+	              return {
+	                  results: data
+	              };
+	            }
+	        }
         });
 
         $('.pastors-shepherds').select2({
