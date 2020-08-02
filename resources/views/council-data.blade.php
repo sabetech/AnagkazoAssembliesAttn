@@ -164,6 +164,7 @@
 
         $('.mission-find').on('select2:select', function (e){
             subMission = e.params.data;
+            branch_val = e.params.data;
             $('.mission-branch-find').prop('disabled', false);
         });
 
