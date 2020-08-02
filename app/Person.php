@@ -23,9 +23,13 @@ class Person extends Model
 
     public static function search($name, $council_id = '', $branch_id = '', $rank = '')
     {
+        if ($council_id == 5) {
+            $persons_result = Person::where('name', 'LIKE', '%' . $name . '%');
+        } else {
+            $persons_result = Person::where('name', 'LIKE', '%' . $name . '%')
+                ->where('councils.id', 'LIKE', $council_id);
+        }
 
-        $persons_result = Person::where('name', 'LIKE', '%' . $name . '%')
-            ->where('councils.id', 'LIKE', $council_id);
 
         if ($branch_id != '')
             $persons_result = $persons_result->where('branch_id', 'LIKE', $branch_id);
