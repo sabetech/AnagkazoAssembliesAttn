@@ -176,7 +176,7 @@
 	            data: function (params) {
 	              var query = {
 	                search: params.term,
-                    council_id: {!!$council->id!!}
+                    council_id: subMission.id
 	              }
 	              return query;
 	            },
