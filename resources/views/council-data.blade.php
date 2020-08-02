@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label for="mission" class="col-md-4 col-form-label text-md-right">Branch</label>
                             <div class="">
-                                <select class="form-control mission-branch-find" id="mission" name="mission-branch" style="width:15em;" disabled>
+                                <select class="form-control mission-branch-find" id="mission-branch" name="mission-branch" style="width:15em;" disabled>
 
                                 </select>
                             </div>
