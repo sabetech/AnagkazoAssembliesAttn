@@ -163,9 +163,9 @@
         });
 
         $('.mission-find').on('select2:select', function (e){
-            subMission = e.params.data;
             branch_val = e.params.data;
             $('.mission-branch-find').prop('disabled', false);
+            $('.person-find').prop('disabled', false);
         });
 
 
@@ -189,6 +189,10 @@
 	        }
         });
 
+        $('.mission-branch-find').on('select2:select', function(e){
+            branch_val = e.params.data;
+        });
+
         $('.pastors-shepherds').select2({
             placeholder: 'Shepherds who FLOWED',
             ajax: {
@@ -208,11 +212,6 @@
 	              };
 	            }
 	        }
-        });
-
-        $('.mission-find').on('select2:select', function (e) {
-            branch_val = e.params.data;
-            $('.person-find').prop('disabled', false);
         });
 
         $('input[name="date"]').daterangepicker({
