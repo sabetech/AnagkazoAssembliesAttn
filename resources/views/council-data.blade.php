@@ -172,9 +172,11 @@
             if (subMission.id == 1000){
                 branch_val.id = 163;
                 $('.mission-branch-find').prop('disabled', true);
+                $('.person-find').prop('disabled', false);
             }
 
-            $('.person-find').prop('disabled', false);
+            if (submMission.id < 10)// starting from bingerville
+                $('.person-find').prop('disabled', false);
         });
 
 
@@ -200,6 +202,8 @@
 
         $('.mission-branch-find').on('select2:select', function(e){
             branch_val = e.params.data;
+
+            $('.person-find').prop('disabled', false);
         });
 
         $('.pastors-shepherds').select2({
