@@ -283,7 +283,7 @@
                             <label>Number of Shepherds who prayed
                                 <h4>
                                     <span class="badge badge-dark">
-                                        {{ ($ofaakor_shepherds_who_prayed + $nsakina_shepherd_flowed) }} /{{ ($ofaakor_shepherds + $nsakina_shepherd_total}) }
+                                        {{ ($ofaakor_shepherds_who_prayed + $nsakina_shepherd_flowed) }} /{{ ($ofaakor_shepherds + $nsakina_shepherd_total) }}
                                     </span>
                                 </h4>
                             </label><br>

@@ -43,6 +43,22 @@ class Branch extends Model
         return $this->hasMany('App\Shepherd', 'branch_id', 'id');
     }
 
+    public function getTotalPastors()
+    {
+        $totalPastors = $this->persons()->where('rank', '=', 'Pastor')->count();
+        return $totalPastors;
+    }
+
+    public function getTotalMinisterShepherds()
+    {
+        return $this->persons()->where('rank', '=', 'Minister Shepherd')->count();
+    }
+
+    public function getTotalGWO()
+    {
+        return $this->persons()->where('rank', '=', 'GWO')->count();
+    }
+
     public function getPastorsFlowRatio($date)
     {
         $pastorsWhoFlowed = CouncilAttendance::where('council_attendance.branch_id', $this->id)
@@ -51,9 +67,7 @@ class Branch extends Model
             ->where('council_attendance.date_taken', $date)
             ->get();
 
-        $totalPastors = $this->persons()->where('rank', '=', 'Pastor')->count();
-
-        return $pastorsWhoFlowed->count() . ' / ' . $totalPastors;
+        return $pastorsWhoFlowed->count();
     }
 
     public function getMinisterShepheredFlowRatio($date)
@@ -64,9 +78,7 @@ class Branch extends Model
             ->where('date_taken', $date)
             ->get();
 
-        $totalMinisterShepherds = $this->persons()->where('rank', '=', 'Minister Shepherd')->count();
-
-        return $ministerShepherdsWhoFlowed->count() . ' / ' . $totalMinisterShepherds;
+        return $ministerShepherdsWhoFlowed->count();
     }
 
     public function getGWOwhoFlowed($date)
@@ -77,9 +89,7 @@ class Branch extends Model
             ->where('date_taken', $date)
             ->get();
 
-        $totalMinisterShepherds = $this->persons()->where('rank', '=', 'GWO')->count();
-
-        return $gwoWhoFlowed->count() . '/' . $totalMinisterShepherds;
+        return $gwoWhoFlowed->count();
     }
 
     public function getShepherdsWhoFlowed($date)
@@ -107,6 +117,6 @@ class Branch extends Model
             ->where('branch_id', $this->id)
             ->sum('total_member_attendances');
 
-        return $membersWhoFlowed . '/' . $this->membership_avg;
+        return $membersWhoFlowed;
     }
 }
