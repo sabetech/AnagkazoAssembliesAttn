@@ -39,7 +39,7 @@
 
                 <ul class="list-unstyled">
 
-                    @for($i = 9;$i < 15;$i++)
+                    @for($i = 9;$i <= 15;$i++)
 
                     <li class="media">
 
@@ -97,6 +97,8 @@
 
                     @endfor
                     </ul>
+
+                    <hr />
 
                     <ul class="list-unstyled">
                     <?php $count = 0; ?>
