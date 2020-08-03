@@ -54,6 +54,13 @@ class Council extends Model
             ->where('persons.council_id', $this->id)->get();
     }
 
+    public function getCenterLeaders()
+    {
+        return $this->join('persons', 'persons.council_id', '=', 'councils.id')
+            ->where('persons.rank', 'Center Leader')
+            ->where('persons.council_id', $this->id)->get();
+    }
+
     public function getTotalShepherds()
     {
         return $this->shepherds;
@@ -95,6 +102,17 @@ class Council extends Model
             ->get();
 
         return $gwoWhoFlowed;
+    }
+
+    public function getCenterLeadersWhoFlowed($date)
+    {
+        $centerLeadersWhoFlowed = CouncilAttendance::where('council_attendance.council_id', $this->id)
+            ->join('persons', 'persons.id', '=', 'council_attendance.person_id')
+            ->where('persons.rank', 'Center Leader')
+            ->where('date_taken', $date)
+            ->get();
+
+        return $centerLeadersWhoFlowed;
     }
 
     public function getShepherdsWhoFlowed($date)
