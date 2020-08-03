@@ -250,7 +250,7 @@
                                 <h4>
                                     <span class="badge badge-secondary">
                                     {{ $ofaakor_minister_shepherd_who_prayed }}/
-                                    {{ $ofaakor_minister_shepherd }}
+                                    {{ $ofaakor_minister_shepherds }}
 
                                     </span>
                                 </h4>
