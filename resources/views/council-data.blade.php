@@ -171,6 +171,7 @@
 
             if (subMission.id == 1000){
                 branch_val.id = 163;
+                $('.mission-branch-find').prop('disabled', true);
             }
 
             $('.person-find').prop('disabled', false);
