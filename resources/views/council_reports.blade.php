@@ -83,10 +83,10 @@
                                 </h4>
                             </label><br>
                             @if (15 === $i)
-                            <label>Number of Center Leaders who prayed
+                            <label>Number of Center Overseers who prayed
                                 <h4>
                                     <span class="badge badge-dark">
-                                        {{ $councils[$i]->getCenterLeadersWhoFlowed($date) }} /
+                                        {{ $councils[$i]->getCenterLeadersWhoFlowed($date)->count() }} /
                                         {{ $councils[$i]->getCenterLeaders()->count() }}
                                     </span>
                                 </h4>

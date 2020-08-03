@@ -57,7 +57,7 @@ class Council extends Model
     public function getCenterLeaders()
     {
         return $this->join('persons', 'persons.council_id', '=', 'councils.id')
-            ->where('persons.rank', 'Center Leader')
+            ->where('persons.rank', 'Center Overseer')
             ->where('persons.council_id', $this->id)->get();
     }
 
@@ -108,7 +108,7 @@ class Council extends Model
     {
         $centerLeadersWhoFlowed = CouncilAttendance::where('council_attendance.council_id', $this->id)
             ->join('persons', 'persons.id', '=', 'council_attendance.person_id')
-            ->where('persons.rank', 'Center Leader')
+            ->where('persons.rank', 'Center Overseer')
             ->where('date_taken', $date)
             ->get();
 
