@@ -201,7 +201,7 @@
                                     <span class="badge badge-warning">
                                         <?php
 
-                                            $val_prayed = $councils[$i]->getTotalMembersWhoFlowed($date)->count();
+                                            $val_prayed = $councils[$i]->getTotalMembersWhoFlowed($date);
                                             $val_total = $councils[$i]->getTotalMembersAvg();
                                             $display_val = '';
 
