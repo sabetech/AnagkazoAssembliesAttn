@@ -228,7 +228,25 @@
 
                       {{-- OFAAKOR TOTALS GOES HERE --}}
                     <li class="media">
+                        <?php //NSAKINA Values
+                            $nsakina = \App\Branch::find(163);
+                            $nsakina_pastors_who_flowed = $nsakina->getPastorsFlowRatio($date);
+                            $nsakina_total_pastor = $nsakina->getTotalPastors();
 
+                            $nsakina_minister_shepherds_flowed = $nsakina->getMinisterShepheredFlowRatio($date);
+                            $nsakina_minister_shepherds_total = $nsakina->getTotalMinisterShepherds();
+
+                            $nsakina_gwo_flowed = $nsakina->getGWOwhoFlowed($date);
+                            $nskaina_gwo_total = $nsakina->getTotalGWO();
+
+                            $nsakina_shepherd_flowed = $nsakina->getShepherdsWhoFlowed($date);
+                            $nsakina_shepherd_total = $nsakina->getTotalShepherds();
+
+                            $nsakina_members_flowed = $nsakina->getTotalMembersWhoFlowed($date);
+                            $nsakina_members_total = $nsakina->membership_avg;
+
+
+                        ?>
                         <div class="media-body shadow-sm p-3 mb-5 bg-white rounded">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
@@ -241,16 +259,16 @@
                             <label>Number of Pastors Who Prayed
                                 <h4>
                                     <span class="badge badge-primary">
-                                        {{ $ofaakor_pastors_who_prayed }} /
-                                        {{ $ofaakor_total_pastors }}
+                                        {{ ($ofaakor_pastors_who_prayed + $nsakina_pastors_who_flowed) }} /
+                                        {{ ($ofaakor_total_pastors + $nsakina_total_pastor ) }}
                                     </span>
                                 </h4>
                             </label><br>
                             <label>Number of Minister shepherds who prayed
                                 <h4>
                                     <span class="badge badge-secondary">
-                                    {{ $ofaakor_minister_shepherd_who_prayed }}/
-                                    {{ $ofaakor_minister_shepherds }}
+                                    {{ ($ofaakor_minister_shepherd_who_prayed + $nsakina_minister_shepherds_flowed) }}/
+                                    {{ ($ofaakor_minister_shepherds + $nsakina_minister_shepherds_total) }}
 
                                     </span>
                                 </h4>
@@ -258,14 +276,14 @@
                             <label>Number of GWOs who prayed
                                 <h4>
                                     <span class="badge badge-info">
-                                        {{ $ofaakor_gwo_who_prayed }} / {{ $ofaakor_gwos }}
+                                        {{ ($ofaakor_gwo_who_prayed  + $nsakina_gwo_flowed) }} / {{ ($ofaakor_gwos + $nskaina_gwo_total) }}
                                     </span>
                                 </h4>
                             </label><br>
                             <label>Number of Shepherds who prayed
                                 <h4>
                                     <span class="badge badge-dark">
-                                        {{$ofaakor_shepherds_who_prayed}} /{{ $ofaakor_shepherds }}
+                                        {{ ($ofaakor_shepherds_who_prayed + $nsakina_shepherd_flowed) }} /{{ ($ofaakor_shepherds + $nsakina_shepherd_total}) }
                                     </span>
                                 </h4>
                             </label><br>
@@ -283,8 +301,8 @@
                             <label>Number of Members who prayed
                                 <h4>
                                     <span class="badge badge-warning">
-                                        {{ $ofaakor_members_who_prayed }} /
-                                        {{ $ofaakor_members }}
+                                        {{ ($ofaakor_members_who_prayed + $nsakina_members_flowed) }} /
+                                        {{ ($ofaakor_members + $nsakina_members_total) }}
                                     </span>
                                 </h4>
                             </label>
