@@ -56,7 +56,7 @@
                         $ofaakor_shepherds = 0;
 
                         $ofaakor_members_who_prayed = 0;
-                        $ofaakor_member = 0;
+                        $ofaakor_members = 0;
 
 
 
@@ -209,7 +209,7 @@
                                                $display_val = 'N/a';
                                             }else{
                                                 $ofaakor_members_who_prayed += $val_prayed;
-                                                $ofaakor_member += $val_total;
+                                                $ofaakor_members += $val_total;
                                                 $display_val = $val_prayed . '/' . $val_total;
                                             }
 
