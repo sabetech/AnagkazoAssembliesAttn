@@ -35,7 +35,7 @@
 
                         @if ($council->council == 'OFAAKOR COUNCIL')
                         <div class="form-group row">
-                            <label for="mission" class="col-md-4 col-form-label text-md-right">Branch</label>
+                            <label for="mission-branch" class="col-md-4 col-form-label text-md-right">Branch</label>
                             <div class="">
                                 <select class="form-control mission-branch-find" id="mission-branch" name="mission-branch" style="width:15em;" disabled>
 
@@ -165,7 +165,10 @@
         $('.mission-find').on('select2:select', function (e){
             subMission = e.params.data;
             branch_val = e.params.data;
-            $('.mission-branch-find').prop('disabled', false);
+
+            if (subMission.id != 100)
+                $('.mission-branch-find').prop('disabled', false);
+
             $('.person-find').prop('disabled', false);
         });
 
