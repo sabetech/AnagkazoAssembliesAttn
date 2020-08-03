@@ -39,7 +39,7 @@
 
                 <ul class="list-unstyled">
 
-                    @for($i = 10;$i < 16;$i++)
+                    @for($i = 9;$i < 15;$i++)
 
                     <li class="media">
 
@@ -49,7 +49,7 @@
                                 <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
                               </svg>
                             <h5 class="mt-0 mb-1">
-                                {{ $councils[$i]->council }} OFAAKOR COUNCIL<br>
+                                {{ $councils[$i]->council }} - OFAAKOR COUNCIL<br>
                                 <label class="">{{ date("F d, Y", strtotime($date)) }}</label>
                             </h5>
                             <label>Number of Pastors Who Prayed
@@ -96,7 +96,9 @@
                       </li>
 
                     @endfor
+                    </ul>
 
+                    <ul class="list-unstyled">
                     <?php $count = 0; ?>
                   @foreach($councils as $council)
                     <?php $count++ ?>
