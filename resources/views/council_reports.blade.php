@@ -55,14 +55,14 @@
                             <label>Number of Pastors Who Prayed
                                 <h4>
                                     <span class="badge badge-primary">
-                                        {{ $council[$i]->getPastorsFlowRatio($date) }}
+                                        {{ $councils[$i]->getPastorsFlowRatio($date) }}
                                     </span>
                                 </h4>
                             </label><br>
                             <label>Number of Minister shepherds who prayed
                                 <h4>
                                     <span class="badge badge-secondary">
-                               {{ $council[$i]->getMinisterShepheredFlowRatio($date) }}
+                               {{ $councils[$i]->getMinisterShepheredFlowRatio($date) }}
 
                                     </span>
                                 </h4>
@@ -70,23 +70,23 @@
                             <label>Number of GWOs who prayed
                                 <h4>
                                     <span class="badge badge-info">
-                                        {{ $council[$i]->getGWO_FlowRatio($date) }}
+                                        {{ $councils[$i]->getGWO_FlowRatio($date) }}
                                     </span>
                                 </h4>
                             </label><br>
                             <label>Number of Shepherds who prayed
                                 <h4>
                                     <span class="badge badge-dark">
-                                        {{ $council[$i]->getShepherdsWhoFlowed($date) }} /
-                                        {{ $council[$i]->getTotalShepherds()->count() }}
+                                        {{ $councils[$i]->getShepherdsWhoFlowed($date) }} /
+                                        {{ $councils[$i]->getTotalShepherds()->count() }}
                                     </span>
                                 </h4>
                             </label><br>
                             <label>Number of Members who prayed
                                 <h4>
                                     <span class="badge badge-warning">
-                                        {{ $council[$i]->getTotalMembersWhoFlowed($date) }} /
-                                        {{ $council[$i]->getTotalMembersAvg() }}
+                                        {{ $councils[$i]->getTotalMembersWhoFlowed($date) }} /
+                                        {{ $councils[$i]->getTotalMembersAvg() }}
                                     </span>
                                 </h4>
                             </label>
