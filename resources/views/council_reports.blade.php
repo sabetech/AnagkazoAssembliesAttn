@@ -82,6 +82,18 @@
                                     </span>
                                 </h4>
                             </label><br>
+                            @if (15 === $i)
+                            <label>Number of Center Leaders who prayed
+                                <h4>
+                                    <span class="badge badge-dark">
+                                        {{ $councils[$i]->getCenterLeadersWhoFlowed($date) }} /
+                                        {{ $councils[$i]->getCenterLeaders()->count() }}
+                                    </span>
+                                </h4>
+                            </label><br>
+                            @endif
+
+
                             <label>Number of Members who prayed
                                 <h4>
                                     <span class="badge badge-warning">
