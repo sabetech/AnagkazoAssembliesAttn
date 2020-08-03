@@ -74,7 +74,7 @@ class CouncilAttendanceController extends Controller
         $person = Person::find($person_id);
         if ($council_id == 5) { // if the council is ofaakor
             $council_id = $branch_id;
-            $branch_id = $request->get('mission-branch')
+            $branch_id = $request->get('mission-branch');
         }
 
         $branch = Branch::find($branch_id);
