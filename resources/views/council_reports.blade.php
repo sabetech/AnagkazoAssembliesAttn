@@ -269,7 +269,7 @@
                                     </span>
                                 </h4>
                             </label><br>
-                            @if (15 === $i)
+
                             <label>Number of Center Overseers who prayed
                                 <h4>
                                     <span class="badge badge-dark">
@@ -279,7 +279,6 @@
                                     </span>
                                 </h4>
                             </label><br>
-                            @endif
 
                             <label>Number of Members who prayed
                                 <h4>
