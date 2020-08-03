@@ -6,6 +6,7 @@ use App\Branch;
 use App\Council;
 use App\CouncilAttendance;
 use App\Exports\ExportCouncilData;
+use App\Ofaakor;
 use App\Person;
 use App\Shepherd;
 use App\ToggleForm;
@@ -71,6 +72,11 @@ class CouncilAttendanceController extends Controller
         $council_id = $request->get('council_id');
 
         $person = Person::find($person_id);
+        if ($council_id == 5) { // if the council is ofaakor
+            $council_id = $branch_id;
+            $branch_id = $request->get('mission-branch')
+        }
+
         $branch = Branch::find($branch_id);
         $council = Council::find($council_id);
 
@@ -124,6 +130,10 @@ class CouncilAttendanceController extends Controller
         return Excel::download($exportCouncilAttendance, "AA_COUNCIL_ATTENANCE_{$date}.xlsx");
     }
 
+    public function verify_submission(Request $request)
+    {
+    }
+
     public function defaulters(Request $request)
     {
 
@@ -135,5 +145,15 @@ class CouncilAttendanceController extends Controller
             // $persons
 
         }
+    }
+
+    public function getMission_branch(Request $request)
+    {
+        $searchTerm = $request->get('search');
+        $branch_id = $request->get('branch_id');
+
+        $branches = Ofaakor::$missions_branches[$branch_id];
+
+        return json_encode($branches);
     }
 }
