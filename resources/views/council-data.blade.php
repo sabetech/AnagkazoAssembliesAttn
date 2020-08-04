@@ -175,7 +175,7 @@
                 $('.person-find').prop('disabled', false);
             }
 
-            if (submMission.id < 10)// starting from bingerville
+            if (subMission.id < 10)// starting from bingerville
                 $('.person-find').prop('disabled', false);
         });
 
