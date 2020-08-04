@@ -325,7 +325,11 @@
                     <?php $count++ ?>
 
                     @if ($count == 5)
-                        @continue;
+                        @continue
+                    @endif
+
+                    @if ($count >= 10)
+                        @break
                     @endif
 
                     <li class="media">
