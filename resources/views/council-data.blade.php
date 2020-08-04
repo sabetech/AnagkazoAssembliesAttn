@@ -166,6 +166,8 @@
             subMission = e.params.data;
             branch_val = e.params.data;
 
+            $('.person-find').prop('disabled', false);
+            console.log(subMission);
             if (subMission.id != 1000)
                 $('.mission-branch-find').prop('disabled', false);
 
