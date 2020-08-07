@@ -28,6 +28,8 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $exportArray[] = ['' => ''];
         $exportArray[] = $this->getSecondHeadings();
 
+        $council_shepherd_ids_that_flowed = [];
+
         foreach ($this->council->persons as $person) {
 
             $row = [];
@@ -40,7 +42,17 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
             $row[] = $person->getNumberOfMembersPresent($this->date);
 
             $exportArray[] = $row;
+
+            //save the shepherds ids that were present for a council
+            $council_shepherd_ids_that_flowed = array_merge(
+                $council_shepherd_ids_that_flowed,
+                $person->getShepherdsPresent($this->date)
+            );
         }
+
+        $exportArray[] = ['' => ''];
+
+        $this->getDefaultingShepherds($council, $council_shepherd_ids_that_flowed);
 
         return $exportArray;
     }
@@ -79,6 +91,13 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
             'Number of Spepherds Who Watched',
             'Number of Members Who Watched'
         ];
+    }
+
+    public function getDefaultingShepherds(Council $council, array $idsThatFlowed)
+    {
+        $shepherdIds = $council->shepherds->pluck('id');
+        dd($shepherdIds);
+        //array_diff($idsThatFlowed,)
     }
 
     /**

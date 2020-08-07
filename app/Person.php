@@ -94,6 +94,17 @@ class Person extends Model
         return '0';
     }
 
+    public function getShepherdsPresent($date)
+    {
+        $shepherds = CouncilAttendance::where('date_taken', $date)
+            ->where('person_id', $this->id)
+            ->first();
+
+        if (!$shepherds) return [];
+        if ($shepherds->shepherd_attendance_ids != 'null')
+            return json_decode($shepherds->shepherd_attendance_ids);
+    }
+
     public function getNumberOfMembersPresent($date)
     {
 
