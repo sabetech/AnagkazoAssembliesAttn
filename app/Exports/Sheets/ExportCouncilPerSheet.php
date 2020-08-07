@@ -103,11 +103,11 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $shepherdIds = $this->council->shepherds->pluck('id')->toArray();
         $defaultingShepherdnames = [];
         $defaultingIDs = array_diff($idsThatFlowed, $shepherdIds);
-
+        dd($defaultingIDs);
         foreach ($defaultingIDs as $defaultingID) {
 
             $shepherd = Shepherd::find($defaultingID);
-            echo $defaultingID . '<br>';
+
             $defaultingShepherdnames[] = $shepherd->shepherd_name;
         }
         return $defaultingShepherdnames;
