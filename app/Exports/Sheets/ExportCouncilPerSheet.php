@@ -54,7 +54,10 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
         $exportArray[] = ['' => ''];
 
-        $exportArray = array_merge($exportArray, $this->getDefaultingShepherds($this->council, $council_shepherd_ids_that_flowed));
+        foreach ($this->getDefaultingShepherds($council_shepherd_ids_that_flowed) as $shepherd_name) {
+            $exportArray[] = $shepherd_name;
+        }
+
 
         return $exportArray;
     }
@@ -95,9 +98,9 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         ];
     }
 
-    public function getDefaultingShepherds(Council $council, array $idsThatFlowed)
+    public function getDefaultingShepherds(array $idsThatFlowed)
     {
-        $shepherdIds = $council->shepherds->pluck('id')->toArray();
+        $shepherdIds = $this->council->shepherds->pluck('id')->toArray();
         $defaultingShepherdnames = [];
         $defaultingIDs = array_diff($idsThatFlowed, $shepherdIds);
 
