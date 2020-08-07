@@ -97,7 +97,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
     public function getDefaultingShepherds(Council $council, array $idsThatFlowed)
     {
-        $shepherdIds = $council->shepherds->pluck('id');
+        $shepherdIds = $council->shepherds->pluck('id')->toArray();
         dd($shepherdIds);
         //array_diff($idsThatFlowed,)
     }

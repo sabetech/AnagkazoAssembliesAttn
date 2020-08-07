@@ -101,7 +101,7 @@ class Person extends Model
             ->first();
 
         if (!$shepherds) return [];
-        if (is_null($shepherds)) return [];
+        if (is_null($shepherds->shepherd_attendance_ids)) return [];
 
         if ($shepherds->shepherd_attendance_ids != 'null')
             return json_decode($shepherds->shepherd_attendance_ids, true);
