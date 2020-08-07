@@ -102,7 +102,7 @@ class Person extends Model
 
         if (!$shepherds) return [];
         if ($shepherds->shepherd_attendance_ids != 'null')
-            return json_decode($shepherds->shepherd_attendance_ids);
+            return json_decode($shepherds->shepherd_attendance_ids, true);
     }
 
     public function getNumberOfMembersPresent($date)
