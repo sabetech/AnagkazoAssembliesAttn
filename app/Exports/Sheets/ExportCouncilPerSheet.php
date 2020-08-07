@@ -46,10 +46,10 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
             var_dump($person->getShepherdsPresent($this->date));
 
             //save the shepherds ids that were present for a council
-            $council_shepherd_ids_that_flowed = array_merge(
-                $council_shepherd_ids_that_flowed,
-                $person->getShepherdsPresent($this->date)
-            );
+            // $council_shepherd_ids_that_flowed = array_merge(
+            //     $council_shepherd_ids_that_flowed,
+            //     $person->getShepherdsPresent($this->date)
+            // );
         }
 
         $exportArray[] = ['' => ''];
