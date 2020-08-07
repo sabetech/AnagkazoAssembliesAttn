@@ -54,8 +54,8 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
         $exportArray[] = ['' => ''];
 
-        foreach ($this->getDefaultingShepherds($council_shepherd_ids_that_flowed) as $shepherd_name) {
-            $exportArray[] = $shepherd_name;
+        foreach ($this->getDefaultingShepherds($council_shepherd_ids_that_flowed) as $key => $shepherd_name) {
+            $exportArray[] = [$key => $shepherd_name];
         }
 
 
