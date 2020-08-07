@@ -3,6 +3,7 @@
 namespace App\Exports\Sheets;
 
 use App\Council;
+use App\Shepherd;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
@@ -43,18 +44,16 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
             $exportArray[] = $row;
 
-            var_dump($person->getShepherdsPresent($this->date));
-
             //save the shepherds ids that were present for a council
-            // $council_shepherd_ids_that_flowed = array_merge(
-            //     $council_shepherd_ids_that_flowed,
-            //     $person->getShepherdsPresent($this->date)
-            // );
+            $council_shepherd_ids_that_flowed = array_merge(
+                $council_shepherd_ids_that_flowed,
+                $person->getShepherdsPresent($this->date)
+            );
         }
 
         $exportArray[] = ['' => ''];
 
-        $this->getDefaultingShepherds($this->council, $council_shepherd_ids_that_flowed);
+        $exportArray = array_merge($exportArray, $this->getDefaultingShepherds($this->council, $council_shepherd_ids_that_flowed));
 
         return $exportArray;
     }
@@ -98,8 +97,14 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
     public function getDefaultingShepherds(Council $council, array $idsThatFlowed)
     {
         $shepherdIds = $council->shepherds->pluck('id')->toArray();
-        dd($shepherdIds);
-        //array_diff($idsThatFlowed,)
+        $defaultingShepherdnames = [];
+        $defaultingIDs = array_diff($idsThatFlowed, $shepherdIds);
+
+        foreach ($defaultingIDs as $defaultingID) {
+            $shepherd = Shepherd::find($defaultingID);
+            $defaultingShepherdnames[] = $shepherd->shepherd_name;
+        }
+        return $defaultingShepherdnames;
     }
 
     /**
