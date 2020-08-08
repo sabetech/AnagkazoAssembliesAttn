@@ -128,7 +128,7 @@ class Council extends Model
                 $totalShepherdsWhoFlowed = array_merge($totalShepherdsWhoFlowed, json_decode($shepherdsRow->shepherd_attendance_ids, true));
             }
         }
-        return array_unique($totalShepherdsWhoFlowed);
+        return count(array_unique($totalShepherdsWhoFlowed));
     }
 
     public function getDefaultingPastors($date)
