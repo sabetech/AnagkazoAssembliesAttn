@@ -125,7 +125,7 @@ class Council extends Model
 
         foreach ($shepherdsWhoFlowed as $shepherdsRow) {
             if ($shepherdsRow->shepherd_attendance_ids != 'null') {
-                $totalShepherdsWhoFlowed[] = json_decode($shepherdsRow->shepherd_attendance_ids, true);
+                $totalShepherdsWhoFlowed = array_merge($totalShepherdsWhoFlowed, json_decode($shepherdsRow->shepherd_attendance_ids, true));
             }
         }
         return count(array_unique($totalShepherdsWhoFlowed));
