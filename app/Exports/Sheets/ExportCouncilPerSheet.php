@@ -66,6 +66,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $exportArray[] = ['Pastor/GWO/Minister Shepherds', 'Shepherd Name Who Flowed', '', 'List of Defaulting Shepherds'];
 
         $lastRowOfExportSoFar = count($exportArray);
+
         foreach ($pastorShepherdArrayThatFlowed as $pastor_shepherd_row) {
             $exportArray[] = $pastor_shepherd_row;
         }
@@ -73,7 +74,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $defaultingNames = $this->getDefaultingShepherds($council_shepherd_ids_that_flowed);
 
         foreach ($defaultingNames as $key => $shepherd_name) {
-            $exportArray[$lastRowOfExportSoFar][4][] = [$shepherd_name];
+            $exportArray[$lastRowOfExportSoFar++][4] = [$shepherd_name];
         }
         return $exportArray;
     }
