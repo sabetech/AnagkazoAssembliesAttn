@@ -60,7 +60,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
             $exportArray[] = [$key => $shepherd_name];
         }
 
-        dd();
+        dd($defaultingNames);
         return $exportArray;
     }
 
