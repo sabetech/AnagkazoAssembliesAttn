@@ -104,9 +104,9 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
     {
         $shepherdIds = $this->council->shepherds->pluck('id')->toArray();
         $defaultingShepherdnames = [];
-        $defaultingIDs = array_diff($idsThatFlowed, $shepherdIds);
+        $defaultingIDs = array_diff($shepherdIds, $idsThatFlowed);
 
-        print("<pre>" . print_r($idsThatFlowed, true) . "</pre>");
+        print("<pre>" . print_r($defaultingIDs, true) . "</pre>");
 
 
 
