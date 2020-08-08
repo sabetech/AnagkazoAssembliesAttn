@@ -106,16 +106,13 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $defaultingShepherdnames = [];
         $defaultingIDs = array_diff($shepherdIds, $idsThatFlowed);
 
-        print("<pre>" . print_r($defaultingIDs, true) . "</pre>");
+        if (count($defaultingIDs) == 0) return [];
 
+        foreach ($defaultingIDs as $defaultingID) {
 
-
-        // foreach ($defaultingIDs as $defaultingID) {
-
-        //     $shepherd = Shepherd::find($defaultingID);
-
-        //     $defaultingShepherdnames[] = $shepherd->shepherd_name;
-        // }
+            $shepherd = Shepherd::find($defaultingID);
+            $defaultingShepherdnames[] = $shepherd->shepherd_name;
+        }
         return $defaultingShepherdnames;
     }
 
