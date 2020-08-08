@@ -90,7 +90,7 @@ class Person extends Model
         if (!$shepherds) return '0';
 
         if ($shepherds->shepherd_attendance_ids != 'null')
-            return count(json_decode($shepherds->shepherd_attendance_ids));
+            return count(json_decode($shepherds->shepherd_attendance_ids, true));
         return '0';
     }
 

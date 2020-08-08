@@ -117,16 +117,18 @@ class Council extends Model
 
     public function getShepherdsWhoFlowed($date)
     {
-        $totalShepherdsWhoFlowed = 0;
+        $totalShepherdsWhoFlowed = [];
         $shepherdsWhoFlowed = CouncilAttendance::where('council_attendance.council_id', $this->id)
             ->where('date_taken', $date)->get();
 
+        //make sure to get unique ids ..
+
         foreach ($shepherdsWhoFlowed as $shepherdsRow) {
             if ($shepherdsRow->shepherd_attendance_ids != 'null') {
-                $totalShepherdsWhoFlowed += count(json_decode($shepherdsRow->shepherd_attendance_ids));
+                $totalShepherdsWhoFlowed[] = json_decode($shepherdsRow->shepherd_attendance_ids, true);
             }
         }
-        return $totalShepherdsWhoFlowed;
+        return count(array_unique($totalShepherdsWhoFlowed));
     }
 
     public function getDefaultingPastors($date)

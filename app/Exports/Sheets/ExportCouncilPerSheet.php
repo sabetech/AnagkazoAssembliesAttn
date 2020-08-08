@@ -29,6 +29,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         $exportArray[] = ['' => ''];
         $exportArray[] = $this->getSecondHeadings();
 
+        $pastorShepherdArrayThatFlowed = [];
         $council_shepherd_ids_that_flowed = [];
 
         foreach ($this->council->persons as $person) {
@@ -44,6 +45,14 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
             $exportArray[] = $row;
 
+            $personShepherdIDs = is_array($person->getShepherdsPresent($this->date)) ?
+                $person->getShepherdsPresent($this->date) : [];
+
+            foreach ($personShepherdIDs as $personShepherd_id) {
+                $shepherd = Shepherd::find($personShepherd_id);
+                if (!$shepherd) continue;
+                $pastorShepherdArrayThatFlowed[] = [$person->name, $shepherd->shepherd_name];
+            }
             //save the shepherds ids that were present for a council
             $council_shepherd_ids_that_flowed = array_merge(
                 $council_shepherd_ids_that_flowed,
@@ -53,12 +62,18 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         }
 
         $exportArray[] = ['' => ''];
-        $exportArray[] = ['Shepherds Defaulting'];
+        $exportArray[] = ['SHEPHERDS'];
+        $exportArray[] = ['Pastor/GWO/Minister Shepherds', 'Shepherd Name Who Flowed', '', 'List of Defaulting Shepherds'];
+
+        $lastRowOfExportSoFar = count($exportArray);
+        foreach ($pastorShepherdArrayThatFlowed as $pastor_shepherd_row) {
+            $exportArray[] = $pastor_shepherd_row;
+        }
 
         $defaultingNames = $this->getDefaultingShepherds($council_shepherd_ids_that_flowed);
 
         foreach ($defaultingNames as $key => $shepherd_name) {
-            $exportArray[] = [$shepherd_name];
+            $exportArray[$lastRowOfExportSoFar][4][] = [$shepherd_name];
         }
         return $exportArray;
     }
