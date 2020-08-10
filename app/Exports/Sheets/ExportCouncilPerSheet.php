@@ -63,7 +63,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
         $exportArray[] = ['' => ''];
         $exportArray[] = ['SHEPHERDS'];
-        $exportArray[] = ['Pastor/GWO/Minister Shepherds', 'Shepherd Name Who Flowed', 'List of Defaulting Shepherds'];
+        $exportArray[] = ['Pastor/GWO/Minister Shepherds', 'Shepherd Name Who Flowed', 'List of Defaulting Shepherds', 'Branch/Assigned_pastor'];
 
         $lastRowOfExportSoFar = count($exportArray);
 
@@ -73,8 +73,9 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
 
         $defaultingNames = $this->getDefaultingShepherds($council_shepherd_ids_that_flowed);
 
-        foreach ($defaultingNames as $key => $shepherd_name) {
-            $exportArray[$lastRowOfExportSoFar++][4] = $shepherd_name;
+        foreach ($defaultingNames as $key => $shepherd) {
+            $exportArray[$lastRowOfExportSoFar++][4] = $shepherd->shepherd_name;
+            $exportArray[$lastRowOfExportSoFar][5] = ($shepherd->getAssigned() == true) ? $shepherd->getAssigned() : '';
         }
         return $exportArray;
     }
@@ -118,7 +119,7 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
     public function getDefaultingShepherds(array $idsThatFlowed)
     {
         $shepherdIds = $this->council->shepherds->pluck('id')->toArray();
-        $defaultingShepherdnames = [];
+        $defaultingShepherd = [];
         $defaultingIDs = array_diff($shepherdIds, $idsThatFlowed);
 
         if (count($defaultingIDs) == 0) return [];
@@ -126,9 +127,9 @@ class ExportCouncilPerSheet implements FromArray, WithTitle
         foreach ($defaultingIDs as $defaultingID) {
 
             $shepherd = Shepherd::find($defaultingID);
-            $defaultingShepherdnames[] = $shepherd->shepherd_name;
+            $defaultingShepherd[] = $shepherd;
         }
-        return $defaultingShepherdnames;
+        return $defaultingShepherd;
     }
 
     /**

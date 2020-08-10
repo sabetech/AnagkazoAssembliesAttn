@@ -28,4 +28,21 @@ class Shepherd extends Model
 
         return $shepherds;
     }
+
+    public function branch()
+    {
+        return $this->belongsTo('\App\Branch', 'branch_id', 'id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo('\App\Person', 'person_id', 'id');
+    }
+
+    public function getAssigned()
+    {
+        if ($this->branch) return $this->branch->branch_name;
+        if ($this->person) return $this->person->name;
+        return null;
+    }
 }
